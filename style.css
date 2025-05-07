@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+html,body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('bg1.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensures it covers the entire screen */
+    overflow: hidden;
+}
+body {
+    background-image: linear-gradient(to right, rgb(123, 192, 238), rgb(248, 248, 201));
+}
+.container {  
+    opacity: 0.9;  
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 4px;
+    padding: 70px;
+    width: 450px;
+    transform: translate(-50%, -50%);
+    background: rgb(245, 244, 244);
+    /* From https://css.glass */
+
+}
+.container1 {
+    opacity: 0.9;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 90%; /* Make it responsive */
+    max-width: 450px; /* Maintain a max width */
+    border-radius: 4px; /* Match the design */
+    padding: 20px; /* Adjust internal padding */
+    transform: translate(-50%, -50%);
+    background: rgb(245, 244, 244); /* Same background as container */
+}
+h2, h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+h3 {
+    margin-top: 20px;
+}
+.form-wrapper form {
+    margin: 25px 0;
+}
+form .form-control {
+    height: 40px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.form-control input {
+    height: 100%;
+    width: 100%;
+    background: hsl(0, 0%, 100%);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: #000000;
+    font-size: 1rem;
+    padding: 0 10px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5); 
+}
+.form-control input:is(:focus, :valid) {
+    background: #fffdfd;
+    padding: 16px 20px 0;
+}
+.form-control label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    pointer-events: none;
+    color: #8c8c8c;
+    transition: all 0.1s ease;
+}
+.form-control input:is(:focus, :valid)~label {
+    font-size: 0.75rem;
+    transform: translateY(-130%);
+}
+form button {
+    width: 100%;
+    padding: 8px 0;
+    font-size: 1rem;
+    background: #3bc2f7;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+form button:hover {
+    background: hsl(214, 73%, 54%);
+}
+a {
+    color: rgb(0, 0, 0);
+}
+
+.logo {
+    width: 70px; /* Adjust the size of the logos */
+    height: 70px; /* Keep aspect ratio */
+}
+.lgn {
+    margin-left: 35%;
+}
+.navbar {
+    display: flex;
+    justify-content: center; /* Center logos horizontally */
+    align-items: center; /* Center logos vertically */
+    gap: 10px; /* Add some space between the logos */
+    margin-bottom: 20px; /* Optional: Add some margin to space the logos from the form */
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+}
+
+.form-control select {
+    height: 100%;
+    width: 100%;
+    background: hsl(0, 0%, 100%);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: #000000;
+    font-size: 1rem;
+    padding: 0 10px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+    appearance: none; /* Removes default arrow in some browsers */
+    }
+    
+    .form-control select:is(:focus, :valid) {
+    background: #fffdfd;
+    padding: 16px 20px 0;
+    }
+    
+    .form-control select + label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    pointer-events: none;
+    color: #8c8c8c;
+    transition: all 0.1s ease;
+    }
+    
+    .form-control select:is(:focus, :valid) + label {
+    font-size: 0.75rem;
+    transform: translateY(-130%);
+    }
