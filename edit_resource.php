@@ -132,85 +132,104 @@ if (isset($_POST['submit'])) {
     }
 
     html, body {
-        background: linear-gradient(135deg, #14569b, #2a3f5f);
-        display: flex;
+        background: #0a192f;
         min-height: 100vh;
         width: 100%;
+        color: #a0aec0;
     }
 
-    /* Sidebar Styles */
-    .sidebar {
-    width: 250px;
-    background-color: rgba(42, 63, 95, 0.9);
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    transform: translateX(0);
-}
+    /* Top Navigation Bar Styles */
+    .top-nav {
+        background-color: #1a2942;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-.sidebar img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 15px;
-}
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
 
-.sidebar a {
-    width: 100%;
-    color: white;
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    margin: 5px 0;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+    .nav-left img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
 
-.sidebar a i {
-    width: 20px;
-    text-align: center;
-}
+    .nav-left .user-name {
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
 
-.sidebar a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(5px);
-}
+    .nav-right {
+        display: flex;
+        gap: 15px;
+    }
 
-.sidebar .logout-button {
-    margin-top: auto;
-    background: rgba(220, 53, 69, 0.1);
-}
+    .nav-right a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        border-radius: 8px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+    }
+
+    .nav-right a i {
+        font-size: 1rem;
+    }
+
+    .nav-right a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .nav-right .logout-button {
+        background: rgba(220, 53, 69, 0.1);
+        margin-left: 10px;
+    }
+
+    .nav-right .logout-button:hover {
+        background: rgba(220, 53, 69, 0.2);
+    }
 
     /* Content Area */
     .content {
-        flex-grow: 1;
-        margin-left: 250px;
+        margin-top: 80px;
         padding: 30px;
-        min-height: 100vh;
-        background: #f0f2f5;
-        transition: margin-left 0.3s ease-in-out;
-        width: calc(100% - 250px);
+        min-height: calc(100vh - 80px);
+        background: #0a192f;
+        width: 100%;
     }
 
     .container {
-        background: white;
+        background: #1a2942;
         border-radius: 15px;
         padding: 25px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         max-width: 800px;
         margin: 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     h1 {
-        color: #14569b;
+        color: white;
         font-size: 1.8rem;
         font-weight: 600;
         margin-bottom: 25px;
@@ -224,7 +243,7 @@ if (isset($_POST['submit'])) {
     label {
         display: block;
         margin-bottom: 8px;
-        color: #14569b;
+        color: white;
         font-weight: 500;
     }
 
@@ -233,19 +252,20 @@ if (isset($_POST['submit'])) {
     select {
         width: 100%;
         padding: 12px 15px;
-        border: 1px solid #e2e8f0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 8px;
         font-size: 0.95rem;
+        background: #2a3b55;
+        color: white;
         transition: all 0.2s;
-        background: #f8fafc;
     }
 
     input[type="text"]:focus,
     textarea:focus,
     select:focus {
-        border-color: #14569b;
+        border-color: #4a90e2;
         outline: none;
-        box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
     }
 
     textarea {
@@ -254,7 +274,7 @@ if (isset($_POST['submit'])) {
     }
 
     button {
-        background: #14569b;
+        background: #4a90e2;
         color: white;
         padding: 12px 25px;
         border: none;
@@ -269,7 +289,7 @@ if (isset($_POST['submit'])) {
     }
 
     button:hover {
-        background: #0f4578;
+        background: #357abd;
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -278,68 +298,22 @@ if (isset($_POST['submit'])) {
         padding: 15px;
         border-radius: 8px;
         margin-bottom: 20px;
+        background: #2a3b55;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .success {
-        background: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
+        border: 1px solid rgba(40, 167, 69, 0.3);
     }
 
     .error {
-        background: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
+        background: rgba(220, 53, 69, 0.2);
+        color: #dc3545;
+        border: 1px solid rgba(220, 53, 69, 0.3);
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .sidebar {
-            transform: translateX(-100%);
-            z-index: 1000;
-        }
-        
-        .sidebar.active {
-            transform: translateX(0);
-        }
-        
-        .content {
-            margin-left: 0;
-            width: 100%;
-            padding: 15px;
-        }
-        
-        .container {
-            margin: 0;
-            padding: 20px;
-        }
-    }
-
-    /* Burger Menu */
-    .burger {
-        display: none;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    .burger div {
-        width: 25px;
-        height: 3px;
-        background-color: #14569b;
-        margin: 5px;
-        transition: 0.3s;
-    }
-
-    @media (max-width: 768px) {
-        .burger {
-            display: block;
-        }
-    }
-
-    /* Add these styles to your existing <style> tag */
     .file-upload {
         position: relative;
         margin-bottom: 10px;
@@ -348,15 +322,16 @@ if (isset($_POST['submit'])) {
     .file-input {
         width: 100%;
         padding: 12px 15px;
-        border: 1px solid #e2e8f0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 8px;
         font-size: 0.95rem;
-        background: #f8fafc;
+        background: #2a3b55;
+        color: white;
     }
 
     .current-file {
         margin-top: 8px;
-        color: #64748b;
+        color: #718096;
         font-size: 0.9rem;
         font-style: italic;
     }
@@ -367,8 +342,8 @@ if (isset($_POST['submit'])) {
         right: 20px;
         padding: 15px 25px;
         border-radius: 8px;
-        background: #4caf50;
-        color: white;
+        background: rgba(40, 167, 69, 0.2);
+        color: #28a745;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         display: flex;
         align-items: center;
@@ -376,37 +351,80 @@ if (isset($_POST['submit'])) {
         transform: translateX(150%);
         transition: transform 0.3s ease-in-out;
         z-index: 1000;
+        border: 1px solid rgba(40, 167, 69, 0.3);
     }
 
-    .popup.show {
-        transform: translateX(0);
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
     }
 
-    .popup i {
-        font-size: 1.2rem;
+    ::-webkit-scrollbar-track {
+        background: #0a192f;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #2a3b55;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #4a90e2;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .top-nav {
+            flex-direction: column;
+            padding: 10px;
+        }
+        
+        .nav-left {
+            margin-bottom: 10px;
+        }
+        
+        .nav-right {
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-right a {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+        }
+        
+        .content {
+            margin-top: 120px;
+            padding: 15px;
+        }
+        
+        .container {
+            margin: 0;
+            padding: 20px;
+        }
     }
     </style>
 </head>
 <body>
-    <div class="burger" onclick="toggleSidebar()">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    
-    <div class="sidebar">
-        <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture" onerror="this.src='assets/default.png';">
-        <center><div class="user-name" style="font-size: x-large; color: white;"><?php echo htmlspecialchars($user_name); ?></div></center>
-        <a href="admindash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="adannouncement.php"><i class="fas fa-bullhorn"></i> Announcements</a>
-        <a href="adsitin.php"><i class="fas fa-chair"></i> Current Sitin</a>
-        <a href="addaily.php"><i class="fas fa-calendar-day"></i> Daily Reports</a>
-        <a href="adviewsitin.php"><i class="fas fa-eye"></i> Generate Reports</a>
-        <a href="adreservation.php"><i class="fas fa-chair"></i> Reservation</a>
-        <a href="adlabresources.php"><i class="fas fa-book"></i> Lab Resources</a>
-        <a href="adlabsched.php"><i class="fas fa-calendar"></i> Lab Schedule</a>
-        <a href="adfeedback.php"><i class="fas fa-book-open"></i> Feedback Reports</a>
-        <a href="admindash.php?logout=true" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+    <div class="top-nav">
+        <div class="nav-left">
+            <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture" onerror="this.src='assets/default.png';">
+            <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
+        </div>
+        <div class="nav-right">
+            <a href="admindash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="adannouncement.php"><i class="fas fa-bullhorn"></i> Announcements</a>
+            <a href="adsitin.php"><i class="fas fa-chair"></i> Current Sitin</a>
+            <a href="addaily.php"><i class="fas fa-calendar-day"></i> Daily Records</a>
+            <a href="adviewsitin.php"><i class="fas fa-eye"></i> Generate Reports</a>
+            <a href="adreservation.php"><i class="fas fa-calendar-check"></i> Reservations</a>
+            <a href="adlabresources.php"><i class="fas fa-book"></i> Lab Resources</a>
+            <a href="adlabsched.php"><i class="fas fa-calendar"></i> Lab Schedule</a>
+            <a href="adfeedback.php"><i class="fas fa-book-open"></i> Feedback</a>
+            <a href="admindash.php?logout=true" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
     </div>
 
     <div class="content">

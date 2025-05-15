@@ -26,8 +26,14 @@ if ($result && mysqli_num_rows($result) > 0) {
 }
 $stmt->close();
 
-// Fetch feedback from users
-$feedback_query = "SELECT f.FEEDBACK, f.LAB_ROOM, f.CREATED_AT, f.USER_ID, u.IDNO, u.USERNAME 
+// Fetch feedback from users with proper date formatting
+$feedback_query = "SELECT 
+                    f.FEEDBACK, 
+                    COALESCE(f.LAB_ROOM, 'N/A') as LAB_ROOM, 
+                    DATE_FORMAT(f.CREATED_AT, '%Y-%m-%d %H:%i:%s') as FORMATTED_DATE, 
+                    f.USER_ID, 
+                    u.IDNO, 
+                    u.USERNAME 
                    FROM feedback f 
                    INNER JOIN user u ON f.USER_ID = u.IDNO 
                    ORDER BY f.CREATED_AT DESC";
@@ -69,14 +75,15 @@ mysqli_data_seek($feedback_result, 0);
 }
 
 html, body {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #0a192f;
     min-height: 100vh;
     width: 100%;
+    color: #a0aec0;
 }
 
 /* Top Navigation Bar Styles */
 .top-nav {
-    background-color: rgba(42, 63, 95, 0.9);
+    background-color: #1a2942;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
@@ -88,6 +95,7 @@ html, body {
     left: 0;
     right: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left {
@@ -148,7 +156,7 @@ html, body {
     margin-top: 80px;
     padding: 30px;
     min-height: calc(100vh - 80px);
-    background: #f0f2f5;
+    background: #0a192f;
 }
 
 /* Remove old sidebar styles */
@@ -157,7 +165,7 @@ html, body {
 }
 
 .container {
-    background: white;
+    background: #1a2942;
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -165,10 +173,11 @@ html, body {
     max-width: 1400px;
     margin: 0 auto;
     height: calc(100vh - 60px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 h1 {
-    color: #14569b;
+    color: white;
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 25px;
@@ -179,7 +188,8 @@ h1 {
     height: calc(100% - 100px);
     overflow-y: auto;
     border-radius: 12px;
-    background: white;
+    background: #1a2942;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Table Styles */
@@ -196,7 +206,7 @@ thead {
 }
 
 th {
-    background: #14569b;
+    background: #2a3b55;
     color: white;
     padding: 15px;
     text-align: left;
@@ -206,12 +216,12 @@ th {
 
 td {
     padding: 12px 15px;
-    border-bottom: 1px solid #e2e8f0;
-    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0aec0;
 }
 
 tbody tr:hover {
-    background: #f8fafc;
+    background: #2a3b55;
 }
 
 /* Custom Scrollbar */
@@ -220,17 +230,17 @@ tbody tr:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #0a192f;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #14569b;
+    background: #2a3b55;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0f4578;
+    background: #4a90e2;
 }
 
 /* Responsive Design */
@@ -304,7 +314,7 @@ tbody tr:hover {
                         <tr>
                             <td><?php echo htmlspecialchars($feedback_row['USER_ID']); ?></td>
                             <td><?php echo htmlspecialchars($feedback_row['LAB_ROOM']); ?></td>
-                            <td><?php echo htmlspecialchars($feedback_row['CREATED_AT']); ?></td>
+                            <td><?php echo htmlspecialchars($feedback_row['FORMATTED_DATE']); ?></td>
                             <td><?php echo htmlspecialchars($feedback_row['FEEDBACK']); ?></td>
                             
                         </tr>

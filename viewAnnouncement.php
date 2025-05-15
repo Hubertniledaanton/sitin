@@ -42,7 +42,7 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
 
         body {
             display: flex;
-            background: #f0f2f5;
+            background: #0a192f;
             min-height: 100vh;
             position: relative;
         }
@@ -50,21 +50,22 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
         /* Sidebar Styles */
         .sidebar {
             width: 280px;
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
+            background: #1a2942;
             height: 100vh;
             padding: 25px;
             position: fixed;
             display: flex;
             flex-direction: column;
-            transform: translateX(0); /* Keep sidebar visible */
-            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+            transform: translateX(0);
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .dashboard-header {
             text-align: center;
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .dashboard-header h2 {
@@ -83,11 +84,11 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
             margin-bottom: 25px;
             border-radius: 12px;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
+            background: #2a3b55;
         }
 
         .profile-link:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: #357abd;
             transform: translateY(-2px);
         }
 
@@ -95,7 +96,7 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
             width: 90px;
             height: 90px;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid #4a90e2;
             margin-bottom: 12px;
             object-fit: cover;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -115,7 +116,7 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
         }
 
         .nav-links a {
-            color: white;
+            color: #a0aec0;
             text-decoration: none;
             padding: 12px 15px;
             border-radius: 8px;
@@ -129,16 +130,19 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
             width: 20px;
             text-align: center;
             font-size: 1.1rem;
+            color: #4a90e2;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #2a3b55;
+            color: white;
             transform: translateX(5px);
         }
 
         .logout-button {
             margin-top: auto;
             background: rgba(220, 53, 69, 0.1) !important;
+            color: #ff6b6b !important;
         }
 
         .logout-button:hover {
@@ -147,31 +151,34 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
 
         /* Content Area */
         .content {
-            margin-left: 280px; /* Always show content with sidebar margin */
+            margin-left: 280px;
             padding: 30px;
             width: calc(100% - 280px);
             min-height: 100vh;
+            background: #0a192f;
         }
 
         .announcement-container {
-            background: white;
+            background: #1a2942;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             height: calc(100vh - 60px);
             width: 100%;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .announcement-title {
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
+            background: #2a3b55;
             color: white;
             padding: 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 15px 15px 0 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .announcement-title h1 {
@@ -179,81 +186,71 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
             display: flex;
             align-items: center;
             gap: 10px;
+            color: white;
         }
 
         .announcements-list {
             padding: 25px;
             overflow-y: auto;
             flex-grow: 1;
-            background: rgba(248, 250, 252, 0.8);
+            background: #0a192f;
         }
 
         .announcement {
-            background: white;
+            background: #1a2942;
             padding: 25px;
             border-radius: 12px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
         }
 
         .announcement:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .announcement h2 {
-            color: #14569b;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .announcement h2 i {
+            color: white;
+            margin-bottom: 10px;
             font-size: 1.2rem;
-            color: #578FCA;
         }
 
         .announcement p {
-            color: #4a5568;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 1.05rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
-        .announcement small {
-            color: #718096;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .announcement .meta {
+            color: #4a90e2;
             font-size: 0.9rem;
-            border-top: 1px solid rgba(226, 232, 240, 0.8);
-            padding-top: 15px;
-        }
-
-        .announcement small i {
-            color: #578FCA;
-        }
-
-        .back-button {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
+            gap: 15px;
         }
 
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
+        .announcement .meta i {
+            color: #4a90e2;
+        }
+
+        /* Scrollbar Styling */
+        .announcements-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .announcements-list::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+
+        .announcements-list::-webkit-scrollbar-thumb {
+            background: #2a3b55;
+            border-radius: 4px;
+        }
+
+        .announcements-list::-webkit-scrollbar-thumb:hover {
+            background: #4a90e2;
         }
 
         /* Remove these styles */
@@ -276,6 +273,26 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
                 width: calc(100% - 280px);
             }
         }
+
+        .back-button {
+            background: #2a3b55;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -288,7 +305,6 @@ $announcements = $con->query("SELECT * FROM announcements ORDER BY created_at DE
         <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="viewAnnouncement.php"><i class="fas fa-bullhorn"></i> Announcement</a>
         <a href="labRules&Regulations.php"><i class="fas fa-flask"></i> Rules & Regulations</a>
-        <a href="sitinrules.php"><i class="fas fa-book"></i> Sit-in Rules</a>
         <a href="history.php"><i class="fas fa-history"></i> History</a>
         <a href="reservation.php"><i class="fas fa-calendar-alt"></i> Reservation</a>
         <a href="labschedule.php"><i class="fas fa-calendar-alt"></i> Lab Schedules</a>

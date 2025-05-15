@@ -37,15 +37,16 @@ if ($result && mysqli_num_rows($result) > 0) {
 }
 
 html, body {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #0a192f;
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: #a0aec0;
 }
 
 /* Top Navigation Bar Styles */
 .top-nav {
-    background-color: rgba(42, 63, 95, 0.9);
+    background-color: #1a2942;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
@@ -57,6 +58,7 @@ html, body {
     left: 0;
     right: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left {
@@ -117,7 +119,7 @@ html, body {
     margin-top: 80px;
     padding: 30px;
     min-height: calc(100vh - 80px);
-    background: #f0f2f5;
+    width: 100%;
 }
 
 /* Remove old sidebar styles */
@@ -126,10 +128,11 @@ html, body {
 }
 
 .container {
-    background: white;
+    background: #1a2942;
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     height: calc(100vh - 60px);
     max-width: 1400px;
     margin: 0 auto;
@@ -137,7 +140,7 @@ html, body {
 }
 
 .header {
-    background: white;
+    background: #1a2942;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -145,7 +148,7 @@ html, body {
 }
 
 .header h1 {
-    color: #14569b;
+    color: white;
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 25px;
@@ -157,10 +160,11 @@ html, body {
     justify-content: space-between;
     gap: 15px;
     margin-bottom: 20px;
-    background: white;
+    background: #2a3b55;
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .filter-group {
@@ -204,7 +208,8 @@ html, body {
 
 .export-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    filter: brightness(110%);
 }
 
 .search-box {
@@ -215,79 +220,104 @@ html, body {
 }
 
 .search-box input {
-    padding: 8px 15px;
-    border: 1px solid #e2e8f0;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     width: 250px;
-    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-box input:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
 
 .search-box button {
-    background: #14569b;
+    background: #4a90e2;
     color: white;
-    padding: 8px 15px;
+    padding: 12px 25px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s;
+    font-weight: 500;
+    transition: all 0.2s;
 }
 
 .search-box button:hover {
-    background: #0f4578;
+    background: #357abd;
     transform: translateY(-2px);
 }
 
 .filter-select {
-    padding: 8px 12px;
-    border: 1px solid #e2e8f0;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     min-width: 140px;
     cursor: pointer;
+    font-size: 1rem;
 }
 
-.filter-select:focus,
-.search-box input:focus {
-    border-color: #14569b;
+.filter-select:focus {
+    border-color: #4a90e2;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
 
+.filter-select option {
+    background: #1a2942;
+    color: white;
+}
+
+/* Table Styles */
 .table-container {
-    height: calc(100% - 180px);
-    overflow-y: auto;
+    background: #1a2942;
     border-radius: 12px;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 20px;
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    color: #a0aec0;
 }
 
 thead {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 1;
 }
 
 th {
-    background: #14569b;
+    background: #2a3b55;
     color: white;
     padding: 15px;
     font-weight: 500;
     text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 td {
     padding: 12px 15px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 tbody tr:hover {
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Custom Scrollbar */
@@ -296,20 +326,34 @@ tbody tr:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #0a192f;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #14569b;
+    background: #2a3b55;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0f4578;
+    background: #4a90e2;
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        margin: 0 15px;
+    }
+    
+    .search-container {
+        flex-wrap: wrap;
+    }
+    
+    .filter-group {
+        flex-wrap: wrap;
+    }
+}
+
 @media (max-width: 768px) {
     .top-nav {
         flex-direction: column;
@@ -337,6 +381,15 @@ tbody tr:hover {
     
     .search-container {
         flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .search-box input {
+        width: 100%;
     }
     
     .export-buttons {
@@ -483,7 +536,8 @@ tbody tr:hover {
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 document.getElementById('searchInput').addEventListener('keyup', filterTable);
@@ -613,169 +667,82 @@ function exportTableToPDF() {
     try {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF('l', 'mm', 'a4');
-        
-        // Set font and size
-        doc.setFont('helvetica', 'bold');
-        
-        // Center everything on the page
-        const pageWidth = doc.internal.pageSize.width;
-        const pageCenter = pageWidth / 2;
-        
-        // Modern color scheme
-        const primaryColor = [41, 128, 185];    // Modern Blue
-        const secondaryColor = [52, 152, 219];  // Lighter Blue
-        const accentColor = [231, 76, 60];      // Red Accent
-        const textColor = [44, 62, 80];         // Dark Text
-        const lightGray = [236, 240, 241];      // Light Gray for backgrounds
-        
-        // Add decorative header background
-        doc.setFillColor(...primaryColor);
-        doc.rect(0, 0, pageWidth, 60, 'F');
-        
-        // Add UC logo
-        doc.addImage('assets/UC.png', 'PNG', 20, 15, 30, 30);
-        
-        // Add header text with modern styling
-        doc.setTextColor(255, 255, 255);
-        doc.setFontSize(24);
-        doc.text('UNIVERSITY OF CEBU - MAIN', pageCenter, 25, { align: 'center' });
-        
-        doc.setFontSize(18);
-        doc.text('COLLEGE OF COMPUTER STUDIES', pageCenter, 35, { align: 'center' });
-        
-        doc.setFontSize(14);
-        doc.text('COMPUTER LABORATORY SITIN MONITORING SYSTEM REPORT', pageCenter, 45, { align: 'center' });
-        
-        // Add decorative line
-        doc.setDrawColor(...accentColor);
-        doc.setLineWidth(0.5);
-        doc.line(20, 65, pageWidth - 20, 65);
-        
-        // Get current date and time with modern formatting
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        });
-        const timeStr = now.toLocaleTimeString('en-US', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        });
-        
-        // Add date and time with modern styling
-        doc.setFontSize(10);
-        doc.setTextColor(...textColor);
-        doc.text(`Generated on: ${dateStr} at ${timeStr}`, pageCenter, 75, { align: 'center' });
-        
-        // Get current filter values
-        const purposeFilter = document.getElementById('purposeFilter').value;
-        const labFilter = document.getElementById('labFilter').value;
-        const searchValue = document.getElementById('searchInput').value;
-        const selectedYear = document.getElementById('yearFilter').value;
-        
-        // Add filter information with modern styling
-        if (purposeFilter || labFilter || searchValue || selectedYear) {
-            doc.setFontSize(9);
-            doc.setTextColor(...textColor);
-            let filterText = 'Applied Filters: ';
-            const filters = [];
-            if (purposeFilter) filters.push(`Purpose: ${purposeFilter}`);
-            if (labFilter) filters.push(`Lab: ${labFilter}`);
-            if (searchValue) filters.push(`Search: ${searchValue}`);
-            if (selectedYear) filters.push(`Year: ${selectedYear}`);
-            
-            doc.text(filterText + filters.join(' | '), pageCenter, 82, { align: 'center' });
-        }
-        
-        // Set font size for table content
-        doc.setFontSize(9);
-        
+
+        // Get table data
         const table = document.querySelector('table');
         const visibleRows = Array.from(table.querySelectorAll('tbody tr')).filter(row => row.style.display !== 'none');
         
-        // Define column widths and positions with modern spacing
-        const colWidths = [25, 50, 50, 25, 30, 25, 25];
-        let yPos = 90; // Adjusted starting position for table
+        // Prepare data for autoTable
+        const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.innerText);
+        const data = visibleRows.map(row => 
+            Array.from(row.querySelectorAll('td')).map(cell => cell.innerText)
+        );
+
+        // Add title and header
+        doc.setFontSize(16);
+        doc.text('UNIVERSITY OF CEBU - MAIN', doc.internal.pageSize.width / 2, 20, { align: 'center' });
+        doc.setFontSize(14);
+        doc.text('COLLEGE OF COMPUTER STUDIES', doc.internal.pageSize.width / 2, 30, { align: 'center' });
+        doc.text('COMPUTER LABORATORY SITIN MONITORING SYSTEM REPORT', doc.internal.pageSize.width / 2, 40, { align: 'center' });
+
+        // Add filters information if any are applied
+        const purposeFilter = document.getElementById('purposeFilter').value;
+        const labFilter = document.getElementById('labFilter').value;
+        const yearFilter = document.getElementById('yearFilter').value;
         
-        // Calculate total width of the table
-        const totalWidth = colWidths.reduce((a, b) => a + b, 0);
-        // Calculate starting X position to center the table
-        let startX = (pageWidth - totalWidth) / 2;
+        let filterText = [];
+        if (purposeFilter) filterText.push(`Purpose: ${purposeFilter}`);
+        if (labFilter) filterText.push(`Lab: ${labFilter}`);
+        if (yearFilter) filterText.push(`Year: ${yearFilter}`);
         
-        // Draw headers with modern styling
-        const headers = Array.from(table.querySelectorAll('th'));
-        let xPos = startX;
-        headers.forEach((header, index) => {
-            // Header background
-            doc.setFillColor(...secondaryColor);
-            doc.rect(xPos, yPos, colWidths[index], 10, 'F');
-            
-            // Header text
-            doc.setTextColor(255, 255, 255);
-            doc.text(header.innerText, xPos + 2, yPos + 7);
-            xPos += colWidths[index];
+        if (filterText.length > 0) {
+            doc.setFontSize(10);
+            doc.text('Filters: ' + filterText.join(' | '), 14, 50);
+        }
+
+        // Add the table
+        doc.autoTable({
+            head: [headers],
+            body: data,
+            startY: 60,
+            theme: 'grid',
+            styles: {
+                fontSize: 8,
+                cellPadding: 2,
+            },
+            headStyles: {
+                fillColor: [26, 41, 66],
+                textColor: 255,
+                fontSize: 9,
+                fontStyle: 'bold',
+            },
+            alternateRowStyles: {
+                fillColor: [245, 245, 245],
+            },
+            margin: { top: 60 },
         });
-        
-        yPos += 12;
-        
-        // Draw filtered rows with modern styling
-        visibleRows.forEach((row, rowIndex) => {
-            const cells = Array.from(row.querySelectorAll('td'));
-            xPos = startX;
-            
-            // Add subtle background for even rows
-            if (rowIndex % 2 === 0) {
-                doc.setFillColor(...lightGray);
-                doc.rect(startX, yPos, totalWidth, 10, 'F');
-            }
-            
-            // Cell content
-            doc.setTextColor(...textColor);
-            cells.forEach((cell, index) => {
-                doc.text(cell.innerText, xPos + 2, yPos + 7);
-                xPos += colWidths[index];
-            });
-            
-            yPos += 10;
-            
-            // Add new page if content exceeds page height
-            if (yPos >= 190) {
-                doc.addPage();
-                yPos = 20;
-                
-                // Redraw headers on new page
-                xPos = startX;
-                headers.forEach((header, index) => {
-                    doc.setFillColor(...secondaryColor);
-                    doc.setTextColor(255, 255, 255);
-                    doc.rect(xPos, yPos, colWidths[index], 10, 'F');
-                    doc.text(header.innerText, xPos + 2, yPos + 7);
-                    xPos += colWidths[index];
-                });
-                yPos += 12;
-            }
-        });
-        
-        // Add modern footer
+
+        // Add footer with page numbers
         const pageCount = doc.internal.getNumberOfPages();
         for (let i = 1; i <= pageCount; i++) {
             doc.setPage(i);
             doc.setFontSize(8);
-            doc.setTextColor(...textColor);
-            
-            // Footer background
-            doc.setFillColor(...lightGray);
-            doc.rect(0, doc.internal.pageSize.height - 15, pageWidth, 15, 'F');
-            
-            // Footer text
-            doc.text(`Page ${i} of ${pageCount}`, pageWidth - 20, doc.internal.pageSize.height - 8);
-            doc.text('© University of Cebu - Main', 20, doc.internal.pageSize.height - 8);
+            doc.text(
+                `Page ${i} of ${pageCount}`,
+                doc.internal.pageSize.width - 20,
+                doc.internal.pageSize.height - 10,
+                { align: 'right' }
+            );
+            doc.text(
+                '© University of Cebu - Main',
+                20,
+                doc.internal.pageSize.height - 10
+            );
         }
-        
+
         // Save the PDF
-        doc.save('sitin_filtered_records.pdf');
-        
+        doc.save('sitin_records.pdf');
+
     } catch (error) {
         console.error('Error generating PDF:', error);
         alert('There was an error generating the PDF. Please try again.');

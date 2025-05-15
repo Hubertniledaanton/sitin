@@ -39,7 +39,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
         body {
             display: flex;
-            background: #f0f2f5;
+            background: #0a192f;
             min-height: 100vh;
             position: relative;
         }
@@ -47,21 +47,22 @@ if ($result && mysqli_num_rows($result) > 0) {
         /* Sidebar Styles */
         .sidebar {
             width: 280px;
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
+            background: #1a2942;
             height: 100vh;
             padding: 25px;
             position: fixed;
             display: flex;
             flex-direction: column;
             transform: translateX(0);
-            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .dashboard-header {
             text-align: center;
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .dashboard-header h2 {
@@ -80,16 +81,22 @@ if ($result && mysqli_num_rows($result) > 0) {
             margin-bottom: 25px;
             border-radius: 12px;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
+            background: #2a3b55;
+        }
+
+        .profile-link:hover {
+            background: #357abd;
+            transform: translateY(-2px);
         }
 
         .profile-link img {
             width: 90px;
             height: 90px;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid #4a90e2;
             margin-bottom: 12px;
             object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .profile-link .user-name {
@@ -106,7 +113,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         }
 
         .nav-links a {
-            color: white;
+            color: #a0aec0;
             text-decoration: none;
             padding: 12px 15px;
             border-radius: 8px;
@@ -120,16 +127,23 @@ if ($result && mysqli_num_rows($result) > 0) {
             width: 20px;
             text-align: center;
             font-size: 1.1rem;
+            color: #4a90e2;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #2a3b55;
+            color: white;
             transform: translateX(5px);
         }
 
         .logout-button {
             margin-top: auto;
             background: rgba(220, 53, 69, 0.1) !important;
+            color: #ff6b6b !important;
+        }
+
+        .logout-button:hover {
+            background: rgba(220, 53, 69, 0.2) !important;
         }
 
         /* Content Area */
@@ -138,27 +152,30 @@ if ($result && mysqli_num_rows($result) > 0) {
             padding: 30px;
             width: calc(100% - 280px);
             min-height: 100vh;
+            background: #0a192f;
         }
 
         .profile-container {
-            background: white;
+            background: #1a2942;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             height: calc(100vh - 60px);
             width: 100%;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .profile-header {
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
+            background: #2a3b55;
             color: white;
             padding: 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 15px 15px 0 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .profile-header h1 {
@@ -169,7 +186,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         }
 
         .back-button {
-            background: rgba(255, 255, 255, 0.15);
+            background: #2a3b55;
             color: white;
             padding: 8px 20px;
             border-radius: 8px;
@@ -179,25 +196,31 @@ if ($result && mysqli_num_rows($result) > 0) {
             align-items: center;
             gap: 8px;
             font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .back-button:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: #357abd;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .profile-content {
             padding: 30px;
-            background: white;
+            background: #0a192f;
+            color: #a0aec0;
+            overflow-y: auto;
+            flex-grow: 1;
         }
 
         .profile-content img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 3px solid #14569b;
+            border: 3px solid #4a90e2;
             margin-bottom: 20px;
             object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         table {
@@ -205,21 +228,26 @@ if ($result && mysqli_num_rows($result) > 0) {
             max-width: 800px;
             margin: 20px auto;
             border-collapse: collapse;
+            background: #1a2942;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         table td {
             padding: 15px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         table td:first-child {
             font-weight: 600;
-            color: #2d3748;
+            color: white;
             width: 30%;
+            background: #2a3b55;
         }
 
         button {
-            background: #14569b;
+            background: #4a90e2;
             color: white;
             padding: 12px 25px;
             border-radius: 8px;
@@ -227,11 +255,31 @@ if ($result && mysqli_num_rows($result) > 0) {
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         button:hover {
-            background: #0f4578;
+            background: #357abd;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Scrollbar Styling */
+        .profile-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .profile-content::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+
+        .profile-content::-webkit-scrollbar-thumb {
+            background: #2a3b55;
+            border-radius: 4px;
+        }
+
+        .profile-content::-webkit-scrollbar-thumb:hover {
+            background: #4a90e2;
         }
 
         @media (max-width: 768px) {
@@ -252,7 +300,6 @@ if ($result && mysqli_num_rows($result) > 0) {
         <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="viewAnnouncement.php"><i class="fas fa-bullhorn"></i> Announcement</a>
         <a href="labRules&Regulations.php"><i class="fas fa-flask"></i> Rules & Regulations</a>
-        <a href="sitinrules.php"><i class="fas fa-book"></i> Sit-in Rules</a>
         <a href="history.php"><i class="fas fa-history"></i> History</a>
         <a href="reservation.php"><i class="fas fa-calendar-alt"></i> Reservation</a>
         <a href="labschedule.php"><i class="fas fa-calendar-alt"></i> Lab Schedules</a>
@@ -272,47 +319,44 @@ if ($result && mysqli_num_rows($result) > 0) {
                     Back to Dashboard
                 </a>
             </div>
-            
             <div class="profile-content">
                 <center>
                     <img src="uploads/<?php echo htmlspecialchars($user_data['PROFILE_PIC']); ?>" alt="Profile Picture">
-                    <h2>Student Information</h2>
                 </center>
-                
                 <table>
                     <tr>
-                        <td>ID Number:</td>
+                        <td>ID Number</td>
                         <td><?php echo htmlspecialchars($user_data['IDNO']); ?></td>
                     </tr>
                     <tr>
-                        <td>Last Name:</td>
+                        <td>Last Name</td>
                         <td><?php echo htmlspecialchars($user_data['LASTNAME']); ?></td>
                     </tr>
                     <tr>
-                        <td>First Name:</td>
+                        <td>First Name</td>
                         <td><?php echo htmlspecialchars($user_data['FIRSTNAME']); ?></td>
                     </tr>
                     <tr>
-                        <td>Middle Name:</td>
+                        <td>Middle Name</td>
                         <td><?php echo htmlspecialchars($user_data['MIDNAME']); ?></td>
                     </tr>
                     <tr>
-                        <td>Course:</td>
+                        <td>Course</td>
                         <td><?php echo htmlspecialchars($user_data['COURSE']); ?></td>
                     </tr>
                     <tr>
-                        <td>Year Level:</td>
+                        <td>Year Level</td>
                         <td><?php echo htmlspecialchars($user_data['YEARLEVEL']); ?></td>
                     </tr>
                     <tr>
-                        <td>Email:</td>
+                        <td>Email</td>
                         <td><?php echo htmlspecialchars($user_data['EMAIL']); ?></td>
                     </tr>
                 </table>
-                
                 <center>
-                    <button type="button" onclick="window.location.href='edit.php'">
-                        <i class="fas fa-edit"></i> Edit Profile
+                    <button onclick="window.location.href='edit.php'">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
                     </button>
                 </center>
             </div>

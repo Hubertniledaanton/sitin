@@ -66,106 +66,132 @@ $reservations = $con->query($query);
         }
 
         html, body {
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
+            background: #0a192f;
             display: flex;
-            min-height: 100vh;
+            flex-direction: column;
             width: 100%;
+            color: #a0aec0;
         }
 
-        /* Sidebar Styles */
-        .sidebar {
-    width: 250px;
-    background-color: rgba(42, 63, 95, 0.9);
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    transform: translateX(0);
-}
+        /* Top Navigation Bar Styles */
+        .top-nav {
+            background-color: #1a2942;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.sidebar img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 15px;
-}
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-.sidebar a {
-    width: 100%;
-    color: white;
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    margin: 5px 0;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        .nav-left img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
 
-.sidebar a i {
-    width: 20px;
-    text-align: center;
-}
+        .nav-left .user-name {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
 
-.sidebar a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(5px);
-}
+        .nav-right {
+            display: flex;
+            gap: 15px;
+        }
 
-.sidebar .logout-button {
-    margin-top: auto;
-    background: rgba(220, 53, 69, 0.1);
-}
+        .nav-right a {
+            color: #a0aec0;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .nav-right a i {
+            font-size: 1rem;
+        }
+
+        .nav-right a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .nav-right .logout-button {
+            background: rgba(220, 53, 69, 0.1);
+            margin-left: 10px;
+        }
+
+        .nav-right .logout-button:hover {
+            background: rgba(220, 53, 69, 0.2);
+        }
     
         /* Content Area */
         .content {
-            margin-left: 250px;
-            padding: 20px;
-            background: #f0f2f5;
-            min-height: 100vh;
-            width: calc(100% - 250px);
+            margin-top: 80px;
+            padding: 30px;
+            min-height: calc(100vh - 80px);
+            width: 100%;
         }
 
         .content-wrapper {
-        max-width: 1300px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        overflow: hidden;
-        height: calc(100vh - 40px);
-        display: flex;
-        flex-direction: column;
-    }
-        .content-header {
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
-            color: white;
-            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #1a2942;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: calc(100vh - 140px);
+            display: flex;
+            flex-direction: column;
         }
 
+        .content-header {
+            background: #2a3b55;
+            color: white;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-header h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
 
         .content-body {
-        flex: 1;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-    }
-        .table-container {
-        flex: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
-        position: relative;
-    }
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+        }
 
         .filter-container {
-            background: #f8fafc;
+            background: #2a3b55;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -174,6 +200,7 @@ $reservations = $con->query($query);
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .date-filters {
@@ -183,10 +210,12 @@ $reservations = $con->query($query);
         }
 
         input[type="date"] {
-            padding: 6px 10px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             font-size: 0.9rem;
+            background: #1a2942;
+            color: #a0aec0;
         }
 
         .status-filters {
@@ -195,183 +224,232 @@ $reservations = $con->query($query);
         }
 
         .filter-btn {
-            padding: 6px 12px;
+            padding: 8px 15px;
             border: none;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .filter-btn.all { background: #64748b; color: white; }
-        .filter-btn.pending { background: #f59e0b; color: white; }
-        .filter-btn.approved { background: #22c55e; color: white; }
-        .filter-btn.rejected { background: #ef4444; color: white; }
-        .filter-btn:hover { transform: translateY(-2px); }
+        .filter-btn.all { 
+            background: #4a5568;
+            color: white;
+        }
+        .filter-btn.pending { 
+            background: #ed8936;
+            color: white;
+        }
+        .filter-btn.approved { 
+            background: #48bb78;
+            color: white;
+        }
+        .filter-btn.rejected { 
+            background: #f56565;
+            color: white;
+        }
+        .filter-btn:hover { 
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
 
         .table-container {
+            flex: 1;
+            overflow-y: auto;
             overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #2a3b55;
         }
 
         .logs-table {
             width: 100%;
-            margin-top: 10px;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-collapse: collapse;
         }
         
         .logs-table th {
-            background: #14569b;
+            background: #1a2942;
             color: white;
-            padding: 12px 15px;
-            font-size: 0.9rem;
+            padding: 15px;
+            font-size: 0.95rem;
             font-weight: 500;
             text-align: left;
             white-space: nowrap;
             position: sticky;
             top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logs-table td {
-            padding: 10px 15px;
+            padding: 12px 15px;
             font-size: 0.9rem;
-            border-bottom: 1px solid #e2e8f0;
-            white-space: nowrap;
-            
-        }
-
-        .logs-table td:nth-child(7) {
-            max-width: 200px;
-            white-space: normal;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
         }
 
         .logs-table tr:hover {
-            background: #f8fafc;
+            background: #1a2942;
         }
 
+        /* Status badges */
         .status-badge {
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .status-pending { background: #fef3c7; color: #92400e; }
-        .status-approved { background: #dcfce7; color: #166534; }
-        .status-rejected { background: #fee2e2; color: #991b1b; }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .status-badge.pending {
+            background: rgba(237, 137, 54, 0.2);
+            color: #ed8936;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
+        .status-badge.approved {
+            background: rgba(72, 187, 120, 0.2);
+            color: #48bb78;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #14569b;
-            border-radius: 4px;
+        .status-badge.rejected {
+            background: rgba(245, 101, 101, 0.2);
+            color: #f56565;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0f4578;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .content-wrapper {
-                margin: 0;
-                border-radius: 0;
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
+            .nav-right a {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .nav-left {
+                margin-bottom: 10px;
+            }
+            
+            .nav-right {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nav-right a {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+            
+            .content {
+                margin-top: 120px;
+                padding: 15px;
+            }
+
             .filter-container {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
-            .status-filters {
-                justify-content: space-between;
+
+            .date-filters, .status-filters {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-<div class="sidebar">
-        <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture">
-        <center><div class="user-name" style="font-size: x-large; color: white;"><?php echo htmlspecialchars($user_name); ?></div></center>
-        <a href="admindash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="adannouncement.php"><i class="fas fa-bullhorn"></i> Announcements</a>
-        <a href="adsitin.php"><i class="fas fa-chair"></i> Current Sitin</a>
-        <a href="adviewsitin.php"><i class="fas fa-eye"></i> Generate Reports</a>
-        <a href="addaily.php"><i class="fas fa-calendar-day"></i> Daily Reports</a>
-        <a href="adreservation.php"><i class="fas fa-calendar-check"></i> Reservations</a>
-      <!--  <a href="adlabreward.php"><i class="fas fa-chair"></i> Lab Reward</a>-->
-        <a href="adlabresources.php"><i class="fas fa-book"></i> Lab Resources</a>
-        <a href="adlabsched.php"><i class="fas fa-calendar"></i> Lab Schedule</a>
-        <a href="adfeedback.php"><i class="fas fa-book-open"></i> Feedback Reports</a>
-        <a href="admindash.php?logout=true" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-    </div>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture">
+            <span class="user-name"><?php echo htmlspecialchars($user_name); ?></span>
+        </div>
+        <div class="nav-right">
+            <a href="admindash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="adannouncement.php"><i class="fas fa-bullhorn"></i> Announcements</a>
+            <a href="adsitin.php"><i class="fas fa-chair"></i> Current Sitin</a>
+            <a href="addaily.php"><i class="fas fa-chair"></i> Daily Records</a>
+            <a href="viewReports.php"><i class="fas fa-eye"></i> Sitin Reports</a>
+            <a href="adreservation.php"><i class="fas fa-chair"></i> Reservation</a>
+            <a href="adlabresources.php"><i class="fas fa-book"></i> Resources</a>
+            <a href="adlabsched.php"><i class="fas fa-calendar"></i> Schedule</a>
+            <a href="admindash.php?logout=true" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+    </nav>
 
     <div class="content">
         <div class="content-wrapper">
             <div class="content-header">
                 <h1><i class="fas fa-history"></i> Reservation Logs</h1>
             </div>
-
             <div class="content-body">
                 <div class="filter-container">
                     <div class="date-filters">
-                        <input type="date" id="filter_date" value="<?php echo $filter_date; ?>">
+                        <label style="color: white;">Filter by date:</label>
+                        <input type="date" id="date-filter" value="<?php echo $filter_date; ?>" onchange="applyFilters()">
                     </div>
                     <div class="status-filters">
-                        <button class="filter-btn all <?php echo $status_filter === 'all' ? 'active' : ''; ?>" 
-                                onclick="filterStatus('all')">All</button>
-                        <button class="filter-btn pending <?php echo $status_filter === 'pending' ? 'active' : ''; ?>"
-                                onclick="filterStatus('pending')">Pending</button>
-                        <button class="filter-btn approved <?php echo $status_filter === 'approved' ? 'active' : ''; ?>"
-                                onclick="filterStatus('approved')">Approved</button>
-                        <button class="filter-btn rejected <?php echo $status_filter === 'rejected' ? 'active' : ''; ?>"
-                                onclick="filterStatus('rejected')">Rejected</button>
+                        <button class="filter-btn all <?php echo $status_filter === 'all' ? 'active' : ''; ?>" onclick="filterStatus('all')">
+                            <i class="fas fa-list"></i> All
+                        </button>
+                        <button class="filter-btn pending <?php echo $status_filter === 'pending' ? 'active' : ''; ?>" onclick="filterStatus('pending')">
+                            <i class="fas fa-clock"></i> Pending
+                        </button>
+                        <button class="filter-btn approved <?php echo $status_filter === 'approved' ? 'active' : ''; ?>" onclick="filterStatus('approved')">
+                            <i class="fas fa-check"></i> Approved
+                        </button>
+                        <button class="filter-btn rejected <?php echo $status_filter === 'rejected' ? 'active' : ''; ?>" onclick="filterStatus('rejected')">
+                            <i class="fas fa-times"></i> Rejected
+                        </button>
                     </div>
                 </div>
-
                 <div class="table-container">
                     <table class="logs-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Student ID</th>
                                 <th>Name</th>
-                                <th>Rm</th>
-                                <th>PC</th>
-                                <th>Date</th>
-                                <th>Time</th>
+                                <th>Room</th>
+                                <th>Seat</th>
+                                <th>Date & Time</th>
                                 <th>Purpose</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($row = $reservations->fetch_assoc()): ?>
-                                <tr>
-                                    <td><?php echo htmlspecialchars($row['student_id']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['LASTNAME'] . ', ' . substr($row['FIRSTNAME'], 0, 1) . '.'); ?></td>
-                                    <td><?php echo htmlspecialchars($row['room']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['seat_number']); ?></td>
-                                    <td><?php echo date('m/d/y', strtotime($row['date'])); ?></td>
-                                    <td><?php echo date('h:i A', strtotime($row['time'])); ?></td>
-                                    <td title="<?php echo htmlspecialchars($row['purpose']); ?>"><?php echo strlen($row['purpose']) > 20 ? substr(htmlspecialchars($row['purpose']), 0, 20) . '...' : htmlspecialchars($row['purpose']); ?></td>
-                                    <td>
-                                        <span class="status-badge status-<?php echo htmlspecialchars($row['status']); ?>">
-                                            <?php 
-                                                $status = htmlspecialchars($row['status']);
-                                                echo !empty($status) ? ucfirst($status) : 'Unknown'; 
-                                            ?>
-                                        </span>
-                                    </td>
-                                </tr>
+                            <?php while($row = $reservations->fetch_assoc()): 
+                                $fullname = $row['LASTNAME'] . ', ' . $row['FIRSTNAME'] . ' ' . substr($row['MIDNAME'], 0, 1) . '.';
+                                $status_class = strtolower($row['status']);
+                            ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['student_id']); ?></td>
+                                <td><?php echo htmlspecialchars($fullname); ?></td>
+                                <td>Room <?php echo htmlspecialchars($row['room']); ?></td>
+                                <td>PC <?php echo htmlspecialchars($row['seat_number']); ?></td>
+                                <td><?php echo date('M d, Y h:i A', strtotime($row['date'] . ' ' . $row['time'])); ?></td>
+                                <td><?php echo htmlspecialchars($row['purpose']); ?></td>
+                                <td>
+                                    <span class="status-badge <?php echo $status_class; ?>">
+                                        <i class="fas fa-<?php 
+                                            echo $row['status'] === 'pending' ? 'clock' : 
+                                                ($row['status'] === 'approved' ? 'check' : 'times'); 
+                                        ?>"></i>
+                                        <?php echo ucfirst($row['status']); ?>
+                                    </span>
+                                </td>
+                            </tr>
                             <?php endwhile; ?>
                         </tbody>
                     </table>
@@ -381,49 +459,15 @@ $reservations = $con->query($query);
     </div>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Add event listener for date filter
-    document.getElementById('filter_date').addEventListener('change', function() {
-        const filterDate = this.value;
-        const status = document.querySelector('.filter-btn.active').textContent.toLowerCase();
-        window.location.href = `?status=${status}&date=${filterDate}`;
-    });
-
-    // Add listeners to status buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filterDate = document.getElementById('filter_date').value;
-            const status = this.textContent.toLowerCase();
-            window.location.href = `?status=${status}&date=${filterDate}`;
-        });
-    });
-});
-
-    function autoApplyFilters() {
-        const filterDate = document.getElementById('filter_date').value;
-        const status = document.querySelector('.filter-btn.active').textContent.toLowerCase();
-
-        // Add loading indicator
-        document.querySelector('.logs-table').style.opacity = '0.5';
-
-        // Construct URL with filters
-        const url = new URL(window.location.href);
-        url.searchParams.set('status', status);
-        if (filterDate) url.searchParams.set('date', filterDate);
-
-        // Update URL and reload page
-        window.location.href = url.toString();
+    function applyFilters() {
+        const date = document.getElementById('date-filter').value;
+        const status = '<?php echo $status_filter; ?>';
+        window.location.href = `reservation_logs.php?date=${date}&status=${status}`;
     }
 
-    // Pre-select date if it exists in URL
-    window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('date')) {
-            document.getElementById('filter_date').value = urlParams.get('date');
-        }
+    function filterStatus(status) {
+        const date = document.getElementById('date-filter').value;
+        window.location.href = `reservation_logs.php?date=${date}&status=${status}`;
     }
     </script>
 </body>

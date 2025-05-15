@@ -43,15 +43,16 @@ $selected_date = isset($_GET['date']) ? $_GET['date'] : $current_date;
 }
 
 html, body {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #0a192f;
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: #a0aec0;
 }
 
 /* Top Navigation Bar Styles */
 .top-nav {
-    background-color: rgba(42, 63, 95, 0.9);
+    background-color: #1a2942;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
@@ -63,6 +64,7 @@ html, body {
     left: 0;
     right: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left {
@@ -123,7 +125,7 @@ html, body {
     margin-top: 80px;
     padding: 30px;
     min-height: calc(100vh - 80px);
-    background: #f0f2f5;
+    width: 100%;
 }
 
 /* Remove old sidebar styles */
@@ -132,17 +134,18 @@ html, body {
 }
 
 .container {
-    background: white;
+    background: #1a2942;
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     height: 90vh;
     max-width: auto;
     margin: 0 auto;
 }
 
 .header h1 {
-    color: #14569b;
+    color: white;
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 25px;
@@ -164,48 +167,58 @@ html, body {
 }
 
 .search-box input {
-    padding: 10px 15px;
-    border: 1px solid #e2e8f0;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
     transition: all 0.2s;
 }
 
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .search-box input:focus {
-    border-color: #14569b;
+    border-color: #4a90e2;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
 
 .search-box button {
-    background: #14569b;
+    background: #4a90e2;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-weight: 500;
     transition: all 0.2s;
 }
 
 .search-box button:hover {
-    background: #0f4578;
-    transform: translateY(-1px);
+    background: #357abd;
+    transform: translateY(-2px);
 }
 
 /* Table Styles */
 .table-container {
-    background: white;
+    background: #1a2942;
     border-radius: 12px;
     overflow: hidden;
     margin-top: 20px;
     height: calc(100vh - 250px);
     overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    color: #a0aec0;
 }
 
 thead {
@@ -215,20 +228,21 @@ thead {
 }
 
 th {
-    background: #14569b;
+    background: #2a3b55;
     color: white;
     padding: 15px;
     font-weight: 500;
     text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 td {
     padding: 12px 15px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 tbody tr:hover {
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Custom Scrollbar */
@@ -237,17 +251,17 @@ tbody tr:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #0a192f;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #14569b;
+    background: #2a3b55;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0f4578;
+    background: #4a90e2;
 }
 
 /* Date Filter */

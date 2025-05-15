@@ -162,15 +162,16 @@ if ($result) {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 html, body {
-    background: linear-gradient(to right, #14569b, #14569b);
+    background: #0a192f;
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: #a0aec0;
 }
 
 /* Top Navigation Bar Styles */
 .top-nav {
-    background-color: rgba(42, 63, 95, 0.9);
+    background-color: #1a2942;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
@@ -182,6 +183,7 @@ html, body {
     left: 0;
     right: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left {
@@ -209,7 +211,7 @@ html, body {
 }
 
 .nav-right a {
-    color: white;
+    color:rgb(255, 255, 255);
     text-decoration: none;
     padding: 8px 15px;
     border-radius: 8px;
@@ -227,6 +229,7 @@ html, body {
 .nav-right a:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
+    color: white;
 }
 
 .nav-right .logout-button {
@@ -242,7 +245,7 @@ html, body {
     margin-top: 80px;
     padding: 30px 30px 30px 450px;
     min-height: calc(100vh - 80px);
-    background: #f0f2f5;
+    background: #0a192f;
     display: flex;
     justify-content: center;
 }
@@ -311,13 +314,14 @@ html, body {
 
 .div1 {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #1a2942;
     border-radius: 15px;
     padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .profile-section {
@@ -376,7 +380,7 @@ html, body {
 }
 
 .search-container input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .search-container button,
@@ -384,7 +388,7 @@ html, body {
     padding: 10px 15px;
     border: none;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #4a90e2;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -396,19 +400,19 @@ html, body {
 
 .search-container button:hover,
 .list-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #357abd;
     transform: translateY(-2px);
 }
 
 .div2, .div3 {
-    background: white;
+    background: #1a2942;
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     height: 580px;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(20, 86, 155, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -426,7 +430,7 @@ html, body {
 }
 
 .div2 h2, .div3 h2 {
-    color: #14569b;
+    color: white;
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 25px;
@@ -434,12 +438,11 @@ html, body {
     align-items: center;
     gap: 12px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(20, 86, 155, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .div2 h2 i, .div3 h2 i {
-    color: #14569b;
-    font-size: 1.3rem;
+    color: #4a90e2;
 }
 
 .div2 canvas, .div3 canvas {
@@ -619,70 +622,40 @@ html, body {
     white-space: nowrap;
 }
 
-.leaderboard-item .user-name strong {
-    background: linear-gradient(135deg, #0369a1, #0284c7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-.leaderboard-item .user-name strong {
-    background: linear-gradient(135deg, #0369a1, #0284c7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    font-size: 1.1rem;
+.leaderboard-item .user-name {
+    color: white !important;
+    font-size: medium;
 }
 
-.leaderboard::-webkit-scrollbar {
-    width: 6px;
+.leaderboard-item .user-points {
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
-.leaderboard::-webkit-scrollbar-track {
+.name {
+    color: white;
+    font-weight: 600;
+}
+
+.student-id {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+}
+
+.sessions, .points {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    color: white;
+    text-align: center;
 }
 
-.leaderboard::-webkit-scrollbar-thumb {
-    background: rgb(255, 255, 255);
-    border-radius: 3px;
+.rank-number {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
 }
 
-/* Updated Rankings Design */
-.leaderboard-item {
-    background: white;
-    padding: 12px 15px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s ease;
-    border: 1px solid #e2e8f0;
-}
-
-.leaderboard-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.leaderboard-item:nth-child(1) {
-    background: linear-gradient(to right, rgba(108, 162, 220, 0.9), rgba(255, 255, 255, 0.7));
-    border-left: 4px solid #FFD700;
-    box-shadow: 0 4px 15px rgba(20, 86, 155, 0.2);
-}
-
-.leaderboard-item:nth-child(2) {
-    background: linear-gradient(to right, rgba(65, 145, 231, 0.7), rgba(255, 255, 255, 0.7));
-    border-left: 4px solid #C0C0C0;
-    box-shadow: 0 4px 15px rgba(20, 86, 155, 0.15);
-}
-
-.leaderboard-item:nth-child(3) {
-    background: linear-gradient(to right, rgba(25, 122, 225, 0.5), rgba(255, 255, 255, 0.7));
-    border-left: 4px solid #CD7F32;
-    box-shadow: 0 4px 15px rgba(20, 86, 155, 0.1);
-}
 .leaderboard-title {
     font-size: 1.3rem;
     font-weight: 600;
@@ -692,34 +665,100 @@ html, body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Ensure text is visible on darker backgrounds */
-.leaderboard-item:nth-child(-n+3) .user-name,
-.leaderboard-item:nth-child(-n+3) .user-id,
-.leaderboard-item:nth-child(-n+3) .rank {
+.student-details {
+    display: flex;
+    flex-direction: column;
     color: white;
 }
 
-.leaderboard-item:nth-child(-n+3) .points-badge {
-    background: white;
-    color: #14569b;
+.points-badge div {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
 }
 
-/* Add hover effect */
-.leaderboard-item:nth-child(-n+3):hover {
+.points-badge div:last-child {
+    background: #4a90e2 !important;
+    color: white !important;
+}
+
+.leaderboard-item .user-info .user-name strong {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Chart Legend Text Color */
+#roomPieChart, #purposePieChart {
+    color: white !important;
+}
+
+/* Updated Rankings Design */
+.leaderboard-item {
+    background: linear-gradient(to right, rgba(25, 122, 225, 0.3), rgba(26, 41, 66, 0.95));
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leaderboard-item:hover {
     transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     filter: brightness(1.1);
 }
+
+.leaderboard-item:nth-child(1) {
+    background: linear-gradient(to right, rgba(108, 162, 220, 0.9), rgba(26, 41, 66, 0.95));
+    border-left: 4px solid #FFD700;
+    box-shadow: 0 4px 15px rgba(20, 86, 155, 0.2);
+}
+
+.leaderboard-item:nth-child(2) {
+    background: linear-gradient(to right, rgba(65, 145, 231, 0.7), rgba(26, 41, 66, 0.95));
+    border-left: 4px solid #C0C0C0;
+    box-shadow: 0 4px 15px rgba(20, 86, 155, 0.15);
+}
+
+.leaderboard-item:nth-child(3) {
+    background: linear-gradient(to right, rgba(25, 122, 225, 0.5), rgba(26, 41, 66, 0.95));
+    border-left: 4px solid #CD7F32;
+    box-shadow: 0 4px 15px rgba(20, 86, 155, 0.1);
+}
+
+/* Ensure text is visible on darker backgrounds */
+.leaderboard-item:nth-child(-n+3) .user-name,
+.leaderboard-item:nth-child(-n+3) .user-points,
+.leaderboard-item:nth-child(-n+3) .rank {
+    color: white !important;
+}
+
+.leaderboard-item:nth-child(-n+3) .points-badge div {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+.leaderboard-item:nth-child(-n+3) .points-badge div:last-child {
+    background: #4a90e2 !important;
+    color: white !important;
+}
+
 .leaderboard-avatar {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #e2e8f0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     flex-shrink: 0;
 }
 .leaderboard-item:hover .leaderboard-avatar {
     transform: scale(1.1);
-    border-color: #0369a1;
+    border-color: #4a90e2;
 }
 .leaderboard-list {
     flex: 1;
@@ -741,42 +780,6 @@ html, body {
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.student-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.name {
-    color: black;
-    font-weight: 600;
-}
-
-.student-id {
-    color: rgba(0, 0, 0, 0.7);
-    font-size: 0.8rem;
-}
-
-.stats {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    min-width: 120px;
-}
-
-.sessions, .points {
-    background: rgba(8, 8, 8, 0.18);
-    padding: 4px 10px;
-    border-radius: 15px;
-    font-size: 0.85rem;
-    color: black    ;
-    text-align: center;
-}
-
-.rank-number {
-    color: rgba(0, 0, 0, 0.96);
-    font-size: 0.9rem;
-    font-weight: bold;
-}
 .search-bar {
     position: fixed;
     top: 20px;
@@ -865,7 +868,8 @@ html, body {
 }
 
 .modal-content {
-    background: white;
+    background: #1a2942;
+    color: #a0aec0;
     margin: 5% auto;
     padding: 25px;
     border-radius: 15px;
@@ -874,6 +878,7 @@ html, body {
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     animation: slideIn 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .close {
@@ -882,17 +887,17 @@ html, body {
     top: 15px;
     font-size: 28px;
     font-weight: bold;
-    color: #718096;
+    color: #a0aec0;
     cursor: pointer;
     transition: color 0.2s;
 }
 
 .close:hover {
-    color: #2d3748;
+    color: white;
 }
 
 .modal-content h3 {
-    color: #14569b;
+    color: white;
     margin-bottom: 20px;
     font-size: 1.5rem;
     font-weight: 600;
@@ -900,13 +905,13 @@ html, body {
 
 .modal-content p {
     margin: 10px 0;
-    color: #2d3748;
+    color: #a0aec0;
 }
 
 .modal-content label {
     display: block;
     margin: 15px 0 5px;
-    color: #14569b;
+    color: white;
     font-weight: 500;
 }
 
@@ -915,13 +920,14 @@ html, body {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .modal-content button {
-    background: #14569b;
+    background: #4a90e2;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -934,7 +940,7 @@ html, body {
 }
 
 .modal-content button:hover {
-    background: #0f4578;
+    background: #357abd;
 }
 
 @keyframes fadeIn {
@@ -967,6 +973,10 @@ html, body {
     height: 100% !important;
     margin: 0 auto;
     display: block;
+    background: #1a2942;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 </style>
 </head>
@@ -1075,7 +1085,7 @@ if ($leaderboardResult) {
             <div class="leaderboard-user">
                 <img src="uploads/<?php echo $profile_pic; ?>" alt="Profile" class="leaderboard-avatar">
                 <div class="user-info">
-                    <div class="user-name" style="color: black; font-size: medium;">
+                    <div class="user-name" style="color: white; font-size: medium;">
                         
                         <?php 
                         if ($isCurrentUser) {
@@ -1085,7 +1095,7 @@ if ($leaderboardResult) {
                         }
                         ?>
                     </div>
-                    <div class="user-points" style="color: rgba(36, 36, 36, 0.72);">
+                    <div class="user-points" style="color: rgba(255, 255, 255, 0.7);">
                         <?php echo htmlspecialchars($user['IDNO']); ?>
                     </div>
                 </div>
@@ -1096,8 +1106,8 @@ if ($leaderboardResult) {
     $points = (int)$user['POINTS'];
     ?>
     <div style="
-        background-color: #f0f0f0; 
-        color: #333; 
+        background-color: rgba(255, 255, 255, 0.1); 
+        color: white; 
         padding: 4px 10px; 
         border-radius: 20px; 
         font-size: 13px;
@@ -1107,8 +1117,8 @@ if ($leaderboardResult) {
         Sessions Used: <?php echo $sessionsUsed; ?>
     </div>
     <div style="
-        background-color: #0369a1; 
-        color: #fff; 
+        background-color: #4a90e2; 
+        color: white; 
         padding: 4px 10px; 
         border-radius: 20px; 
         font-size: 13px;
@@ -1341,6 +1351,7 @@ const roomPieChart = new Chart(roomCtx, {
             legend: {
                 position: 'right',
                 labels: {
+                    color: 'white',
                     font: {
                         size: 11
                     }
@@ -1405,6 +1416,7 @@ const purposePieChart = new Chart(purposeCtx, {
             legend: {
                 position: 'right',
                 labels: {
+                    color: 'white',
                     font: {
                         size: 11
                     }

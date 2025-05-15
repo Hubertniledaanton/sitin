@@ -26,30 +26,37 @@ $user_name = 'User';
 }
 $stmt->close();
 
-// Get user's recent sit-in room
+// Get the lab room and time from URL parameters
+$lab_room = isset($_GET['lab_room']) ? $_GET['lab_room'] : '';
+$time_in = isset($_GET['time_in']) ? $_GET['time_in'] : '';
+
+// If no URL parameters, get user's recent sit-in room
+if (empty($lab_room) || empty($time_in)) {
 $username = $_SESSION['Username'];
-$room_query = "SELECT lr.LAB_ROOM
-FROM login_records lr
-INNER JOIN user u ON lr.IDNO = u.IDNO
-WHERE u.USERNAME = ?
-ORDER BY lr.TIME_IN DESC
-LIMIT 1";
+$room_query = "SELECT lr.LAB_ROOM, lr.TIME_IN
+               FROM login_records lr
+               INNER JOIN user u ON lr.IDNO = u.IDNO
+               WHERE u.USERNAME = ?
+               ORDER BY lr.TIME_IN DESC
+               LIMIT 1";
 $room_stmt = $con->prepare($room_query);
 $room_stmt->bind_param("s", $username);
 $room_stmt->execute();
 $room_result = $room_stmt->get_result();
-$recent_room = '';
+
 if ($room_result && $room_result->num_rows > 0) {
 $room_row = $room_result->fetch_assoc();
-$recent_room = $room_row['LAB_ROOM'];
+$lab_room = $room_row['LAB_ROOM'];
+$time_in = $room_row['TIME_IN'];
 }
 $room_stmt->close();
+}
 
 // Handle feedback submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['feedback'])) {
 $feedback = $_POST["feedback"];
-$time_in = $_POST["time_in"];
-$lab_room = $_POST["lab_room"];
+$submit_lab_room = $_POST["lab_room"];
+$submit_time_in = $_POST["time_in"];
 
 // Get the user's ID from the database using their username
 $username = $_SESSION['Username'];
@@ -63,23 +70,33 @@ $user_id = $user_row['IDNO'];
 $id_stmt->close();
 
 // Check if feedback already exists for this sit-in session
-$check_query = "SELECT * FROM feedback WHERE USER_ID = ? AND DATE(CREATED_AT) = DATE(?)";
+$check_query = "SELECT * FROM feedback WHERE USER_ID = ? AND LAB_ROOM = ? AND DATE(CREATED_AT) = DATE(?)";
 $check_stmt = $con->prepare($check_query);
-$check_stmt->bind_param("is", $user_id, $time_in);
+$check_stmt->bind_param("iss", $user_id, $submit_lab_room, $submit_time_in);
 $check_stmt->execute();
 $check_result = $check_stmt->get_result();
 
 if ($check_result->num_rows > 0) {
-echo "<script>alert('You have already submitted feedback for this session!');</script>";
+echo "<script>
+        alert('You have already submitted feedback for this session!');
+        window.location.href = 'history.php';
+      </script>";
 } else {
-// Insert the feedback with the user's ID, lab room, and time
+// Insert the feedback
 $stmt = $con->prepare("INSERT INTO feedback (FEEDBACK, USER_ID, LAB_ROOM, CREATED_AT) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("siss", $feedback, $user_id, $lab_room, $time_in);
+$stmt->bind_param("siss", $feedback, $user_id, $submit_lab_room, $submit_time_in);
 
 if ($stmt->execute()) {
-echo "<script>alert('Feedback submitted successfully!'); window.location.href='history.php';</script>";
+echo "<script>
+        alert('Feedback submitted successfully!');
+        window.location.href = 'history.php';
+      </script>";
+exit();
 } else {
-echo "<script>alert('Failed to submit feedback!');</script>";
+echo "<script>
+        alert('Failed to submit feedback!');
+        window.location.href = 'feedback.php';
+      </script>";
 }
 $stmt->close();
 }
@@ -106,78 +123,108 @@ $feedback_result = mysqli_query($con, $feedback_query);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-    display: flex;
+html, body {
+    background: #0a192f;
     min-height: 100vh;
-    background: #f0f2f5;
+    width: 100%;
+    color: #a0aec0;
 }
 
-.sidebar {
-    width: 280px;
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
-    color: white;
-    padding: 20px;
-    transition: all 0.3s ease;
+/* Top Navigation Bar Styles */
+.top-nav {
+    background-color: #1a2942;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
     position: fixed;
+    top: 0;
     left: 0;
-    height: 100vh;
-    overflow-y: auto;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.sidebar img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 20px;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-}
-
-.sidebar a {
-    color: white;
-    text-decoration: none;
+.nav-left {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
+    gap: 20px;
+}
+
+.nav-left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-left .user-name {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-right a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
     border-radius: 8px;
-    margin: 8px 0;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
 }
 
-.sidebar a i {
-    margin-right: 10px;
-    width: 20px;
-    text-align: center;
+.nav-right a i {
+    font-size: 1rem;
 }
 
-.sidebar a:hover {
+.nav-right a:hover {
     background: rgba(255, 255, 255, 0.1);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+}
+
+.nav-right .logout-button {
+    background: rgba(220, 53, 69, 0.1);
+    margin-left: 10px;
+}
+
+.nav-right .logout-button:hover {
+    background: rgba(220, 53, 69, 0.2);
 }
 
 .content {
-    flex: 1;
-    margin-left: 280px;
-    padding: 40px;
-    background: #f0f2f5;
+    margin-top: 80px;
+    padding: 30px;
+    min-height: calc(100vh - 80px);
+    background: #0a192f;
 }
 
 .container {
-    background: white;
+    background: #1a2942;
     border-radius: 15px;
+    padding: 25px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #2a3b55;
     color: white;
     padding: 25px;
     border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header h1 {
@@ -186,6 +233,7 @@ body {
     align-items: center;
     gap: 10px;
     margin: 0;
+    color: white;
 }
 
 .feedback-form {
@@ -193,41 +241,48 @@ body {
 }
 
 .room-info {
-    background: #f8f9fa;
+    background: #2a3b55;
     padding: 15px 20px;
     border-radius: 10px;
     margin-bottom: 20px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     gap: 10px;
+    color: #a0aec0;
 }
 
-room-info i {
-    color: #14569b;
+.room-info i {
+    color: #4a90e2;
     font-size: 1.2rem;
 }
 
 textarea {
     width: 100%;
     padding: 15px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     resize: vertical;
     min-height: 150px;
     margin: 15px 0;
     font-size: 0.95rem;
     transition: all 0.3s ease;
+    background: #2a3b55;
+    color: #a0aec0;
 }
 
 textarea:focus {
     outline: none;
-    border-color: #14569b;
-    box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+textarea::placeholder {
+    color: #718096;
 }
 
 .submit-btn {
-    background: #14569b;
+    background: #4a90e2;
     color: white;
     padding: 12px 30px;
     border: none;
@@ -240,82 +295,123 @@ textarea:focus {
     gap: 8px;
 }
 
-submit-btn:hover {
-    background: #0f4578;
+.submit-btn:hover {
+    background: #357abd;
     transform: translateY(-2px);
 }
 
 .warning-message {
-    background: #fff3cd;
-    color: #856404;
+    background: rgba(255, 243, 205, 0.1);
+    color: #ffd700;
     padding: 15px 20px;
     border-radius: 10px;
     margin: 20px 0;
     display: flex;
     align-items: center;
     gap: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .warning-message i {
     font-size: 1.2rem;
+    color: #ffd700;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a192f;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a3b55;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4a90e2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .nav-left {
+        margin-bottom: 10px;
+    }
+    
+    .nav-right {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav-right a {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .content {
+        margin-top: 120px;
+    }
+}
 </style>
 </head>
 <body>
-<div class="burger" onclick="toggleSidebar()">
-<div></div>
-<div></div>
-<div></div>
-</div>
-<div class="sidebar">
-<img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture">
-<center><div class="user-name" style="font-size: x-large; color: white;"><?php echo htmlspecialchars($user_name); ?></div></center>
-<a href="profile.php"><i class="fas fa-user"></i> Profile</a>
-<a href="viewAnnouncement.php"><i class="fas fa-bullhorn"></i> View Announcement</a>
-<a href="sitinrules.php"><i class="fas fa-book"></i> Sit-in Rules</a>
-<a href="labRules&Regulations.php"><i class="fas fa-flask"></i> Lab Rules & Regulations</a>
-<a href="history.php"><i class="fas fa-history"></i> Sit-in History</a>
-<a href="reservation.php"><i class="fas fa-calendar-alt"></i> Reservation</a>
-<a href="viewremaining.php"><i class="fas fa-clock"></i> View Remaining Session</a>
-<a href="login.php" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-</div>
-<div class="content">
-    <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-comments"></i> Submit Feedback</h1>
+    <div class="top-nav">
+        <div class="nav-left">
+            <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture" onerror="this.src='assets/default.png';">
+            <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
         </div>
-        
-        <div class="feedback-form">
-            <?php if (!empty($recent_room)): ?>
-                <div class="room-info">
-                    <i class="fas fa-door-open"></i>
-                    <p>Submitting feedback for Lab Room <?php echo htmlspecialchars($recent_room); ?></p>
-                </div>
-                
-                <form action="feedback.php" method="POST">
-                    <input type="hidden" name="time_in" value="<?php echo isset($_GET['time_in']) ? htmlspecialchars($_GET['time_in']) : ''; ?>">
-                    <input type="hidden" name="lab_room" value="<?php echo isset($_GET['lab_room']) ? htmlspecialchars($_GET['lab_room']) : ''; ?>">
-                    <textarea name="feedback" placeholder="Share your experience with the laboratory..." required></textarea>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i>
-                        Submit Feedback
-                    </button>
-                </form>
-            <?php else: ?>
-                <div class="warning-message">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <p>You need to have a sit-in session before submitting feedback.</p>
-                </div>
-            <?php endif; ?>
+        <div class="nav-right">
+            <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
+            <a href="viewAnnouncement.php"><i class="fas fa-bullhorn"></i> View Announcement</a>
+            <a href="sitinrules.php"><i class="fas fa-book"></i> Sit-in Rules</a>
+            <a href="labRules&Regulations.php"><i class="fas fa-flask"></i> Lab Rules & Regulations</a>
+            <a href="history.php"><i class="fas fa-history"></i> Sit-in History</a>
+            <a href="reservation.php"><i class="fas fa-calendar-alt"></i> Reservation</a>
+            <a href="viewremaining.php"><i class="fas fa-clock"></i> View Remaining Session</a>
+            <a href="login.php" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
         </div>
     </div>
-</div>
-<script>
-function toggleSidebar() {
-document.querySelector('.sidebar').classList.toggle('active');
-document.querySelector('.content').classList.toggle('sidebar-active');
-}
-</script>
+
+    <div class="content">
+        <div class="container">
+            <div class="header">
+                <h1><i class="fas fa-comments"></i> Submit Feedback</h1>
+            </div>
+            
+            <div class="feedback-form">
+                <?php if (!empty($lab_room)): ?>
+                    <div class="room-info">
+                        <i class="fas fa-door-open"></i>
+                        <p>Submitting feedback for Lab Room <?php echo htmlspecialchars($lab_room); ?></p>
+                    </div>
+                    
+                    <form action="feedback.php" method="POST">
+                        <input type="hidden" name="time_in" value="<?php echo htmlspecialchars($time_in); ?>">
+                        <input type="hidden" name="lab_room" value="<?php echo htmlspecialchars($lab_room); ?>">
+                        <textarea name="feedback" placeholder="Share your experience with the laboratory..." required></textarea>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Feedback
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <div class="warning-message">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>You need to have a sit-in session before submitting feedback.</p>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

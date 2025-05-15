@@ -46,110 +46,112 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
 
         body {
             display: flex;
-            background: #f0f2f5;
+            background: #0a192f;
             min-height: 100vh;
             position: relative;
         }
 
-/* Sidebar Styles */
-.sidebar {
-    width: 280px;
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
-    height: 100vh;
-    padding: 25px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(0); /* Remove the initial transform */
-    transition: all 0.3s ease-in-out;
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
-}
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: #1a2942;
+            height: 100vh;
+            padding: 25px;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(0);
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.dashboard-header {
-    text-align: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.dashboard-header h2 {
-    color: white;
-    font-size: 26px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
+        .dashboard-header h2 {
+            color: white;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
 
-.profile-link {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 25px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-}
+        .profile-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: #2a3b55;
+        }
 
-.profile-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
+        .profile-link:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
 
-.profile-link img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    margin-bottom: 12px;
-    object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+        .profile-link img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #4a90e2;
+            margin-bottom: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
 
-.profile-link .user-name {
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-}
+        .profile-link .user-name {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+        }
 
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+        .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-.nav-links a i {
-    width: 20px;
-    text-align: center;
-    font-size: 1.1rem;
-}
+        .nav-links a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4a90e2;
+        }
 
-.nav-links a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(5px);
-}
+        .nav-links a:hover {
+            background: #2a3b55;
+            color: white;
+            transform: translateX(5px);
+        }
 
-.logout-button {
-    margin-top: auto;
-    background: rgba(220, 53, 69, 0.1) !important;
-}
+        .logout-button {
+            margin-top: auto;
+            background: rgba(220, 53, 69, 0.1) !important;
+            color: #ff6b6b !important;
+        }
 
-.logout-button:hover {
-    background: rgba(220, 53, 69, 0.2) !important;
-}
-
+        .logout-button:hover {
+            background: rgba(220, 53, 69, 0.2) !important;
+        }
 
         /* Content Area */
         .content {
@@ -157,18 +159,19 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
             padding: 30px;
             width: calc(100% - 280px);
             min-height: 100vh;
-            background: #f8fafc;
+            background: #0a192f;
         }
 
         .schedule-container {
-            background: white;
+            background: #1a2942;
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             height: calc(100vh - 60px);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .schedule-header {
@@ -176,7 +179,7 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
             justify-content: space-between;
             align-items: center;
             padding-bottom: 20px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 25px;
         }
 
@@ -186,27 +189,29 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
             gap: 20px;
         }
 
-        .back-btn {
-            display: inline-flex;
+        .back-button {
+            background: #2a3b55;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
-            background: #f1f5f9;
-            color: #475569;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .back-btn:hover {
-            background: #e2e8f0;
-            transform: translateX(-5px);
+        .back-button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .schedule-header h1 {
-            color: #14569b;
-            font-size: 1.8rem;
+            color: white;
+            font-size: 24px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -215,19 +220,19 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
 
         .header-controls select {
             padding: 8px 15px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            background: white;
-            color: #2d3748;
+            background: #2a3b55;
+            color: white;
             cursor: pointer;
         }
 
         .schedule-table {
             flex: 1;
             overflow: auto;
-            background: white;
+            background: #1a2942;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .schedule-table table {
@@ -236,7 +241,7 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
         }
 
         .schedule-table th {
-            background: #14569b;
+            background: #2a3b55;
             color: white;
             padding: 15px;
             text-align: center;
@@ -244,21 +249,42 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
             position: sticky;
             top: 0;
             z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .schedule-table td {
             padding: 12px;
-            border: 1px solid #e2e8f0;
             text-align: center;
+            color: #a0aec0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scrollbar Styling */
+        .schedule-table::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .schedule-table::-webkit-scrollbar-track {
+            background: #0a192f;
+        }
+
+        .schedule-table::-webkit-scrollbar-thumb {
+            background: #2a3b55;
+            border-radius: 4px;
+        }
+
+        .schedule-table::-webkit-scrollbar-thumb:hover {
+            background: #4a90e2;
         }
 
         .time-slot {
-            background: #f8fafc;
+            background: #2a3b55;
             font-weight: 500;
-            color: #2d3748;
+            color: white;
             position: sticky;
             left: 0;
             z-index: 5;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .status-btn {
@@ -269,16 +295,17 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
             justify-content: center;
             gap: 8px;
             font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .status-btn.available {
-            background: #dcfce7;
-            color: #166534;
+            background: rgba(22, 163, 74, 0.2);
+            color: #4ade80;
         }
 
         .status-btn.occupied {
-            background: #fee2e2;
-            color: #991b1b;
+            background: rgba(220, 38, 38, 0.2);
+            color: #f87171;
         }
 
         .status-indicator {
@@ -288,22 +315,23 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
         }
 
         .status-btn.available .status-indicator {
-            background: #166534;
+            background: #4ade80;
         }
 
         .status-btn.occupied .status-indicator {
-            background: #991b1b;
+            background: #f87171;
         }
 
         /* Replace the existing header styles with these */
         .resources-header {
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
+            background: #2a3b55;
             color: white;
             padding: 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 15px 15px 0 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .resources-header h1 {
@@ -311,10 +339,11 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
             display: flex;
             align-items: center;
             gap: 10px;
+            color: white;
         }
 
-        .back-button {
-            background: rgba(255, 255, 255, 0.15);
+        .resources-header .back-button {
+            background: #1a2942;
             color: white;
             padding: 8px 20px;
             border-radius: 8px;
@@ -324,11 +353,13 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
             align-items: center;
             gap: 8px;
             font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.25);
+        .resources-header .back-button:hover {
+            background: #357abd;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* Move the room filter to match resources filter style */
@@ -349,42 +380,43 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
 
         /* Add to your existing styles */
         .filter-section {
-            background: white;
+            background: #1a2942;
             padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .filter-group {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-left: auto; /* This will push it to the right */
+            margin-left: auto;
         }
 
         .filter-group label {
-            color: #4a5568;
+            color: white;
             font-weight: 500;
         }
 
         .filter-group select {
             padding: 10px 15px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            background: white;
-            color: #2d3748;
+            background: #2a3b55;
+            color: white;
             min-width: 200px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .filter-group select:hover {
-            border-color: #cbd5e0;
+            border-color: #4a90e2;
+            background: #357abd;
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #14569b;
-            box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
         }
     </style>
 </head>
@@ -403,7 +435,6 @@ $rooms = ['524', '526', '528', '530', '542', '544'];
         <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="viewAnnouncement.php"><i class="fas fa-bullhorn"></i> Announcement</a>
         <a href="labRules&Regulations.php"><i class="fas fa-flask"></i> Rules & Regulations</a>
-        <a href="sitinrules.php"><i class="fas fa-book"></i> Sit-in Rules</a>
         <a href="history.php"><i class="fas fa-history"></i> History</a>
         <a href="reservation.php"><i class="fas fa-calendar-alt"></i> Reservation</a>
         <a href="labschedule.php"><i class="fas fa-calendar-alt"></i> Lab Schedules</a>

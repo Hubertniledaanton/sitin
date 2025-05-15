@@ -54,40 +54,121 @@ if ($result && mysqli_num_rows($result) > 0) {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background: #f0f2f5;
-            min-height: 100vh;
+        html, body {
+            background: #0a192f;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            color: #a0aec0;
+        }
+
+        /* Top Navigation Bar Styles */
+        .top-nav {
+            background-color: #1a2942;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-left img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-left .user-name {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-right a {
+            color: #a0aec0;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .nav-right a i {
+            font-size: 1rem;
+        }
+
+        .nav-right a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .nav-right .logout-button {
+            background: rgba(220, 53, 69, 0.1);
+            margin-left: 10px;
+        }
+
+        .nav-right .logout-button:hover {
+            background: rgba(220, 53, 69, 0.2);
         }
 
         /* Content Area */
         .content {
-            margin-left: 250px;
-            padding: 20px;
+            margin-top: 80px;
+            padding: 30px;
+            min-height: calc(100vh - 80px);
         }
 
         .content-wrapper {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: #1a2942;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .content-header {
-            background: #14569b;
+            background: #2a3b55;
             color: white;
-            padding: 15px 20px;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .content-header h1 {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 500;
             display: flex;
             align-items: center;
             gap: 10px;
+            color: white;
         }
 
         .content-body {
-            padding: 20px;
+            padding: 1.5rem;
         }
 
         /* Table Styles */
@@ -101,31 +182,31 @@ if ($result && mysqli_num_rows($result) > 0) {
         }
 
         .requests-table th {
-            background: #f8f9fa;
-            color: #14569b;
-            padding: 12px 15px;
+            background: #2a3b55;
+            color: white;
+            padding: 1rem;
             text-align: left;
-            font-weight: 600;
-            border-bottom: 2px solid #e9ecef;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .requests-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e9ecef;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .requests-table tr:hover {
-            background: #f8f9fa;
+            background: #2a3b55;
         }
 
         /* Action Buttons */
         .action-btn {
-            padding: 6px 12px;
+            padding: 0.5rem 1rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.9rem;
         }
 
@@ -137,7 +218,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         .reject-btn {
             background: #ef4444;
             color: white;
-            margin-left: 8px;
+            margin-left: 0.5rem;
         }
 
         .action-btn:hover {
@@ -145,105 +226,65 @@ if ($result && mysqli_num_rows($result) > 0) {
             transform: translateY(-1px);
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #14569b;
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0f4578;
-        }
-
-        /* Keep your existing sidebar styles */
-        .sidebar {
-    width: 250px;
-    background-color: rgba(42, 63, 95, 0.9);
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    transform: translateX(0);
-}
-
-.sidebar img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    margin-bottom: 15px;
-}
-
-.sidebar a {
-    width: 100%;
-    color: white;
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    margin: 5px 0;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.sidebar a i {
-    width: 20px;
-    text-align: center;
-}
-
-.sidebar a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(5px);
-}
-
-.sidebar .logout-button {
-    margin-top: auto;
-    background: rgba(220, 53, 69, 0.1);
-}
-
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-right a {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
+            .top-nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .nav-left {
+                margin-bottom: 10px;
+            }
+            
+            .nav-right {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nav-right a {
+                font-size: 0.8rem;
+                padding: 6px 10px;
             }
             
             .content {
-                margin-left: 0;
-                width: 100%;
+                margin-top: 120px;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-<div class="sidebar">
-<img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture">
-<center><div class="user-name" style="font-size: x-large; color: white;"><?php echo htmlspecialchars($user_name); ?></div></center>
-<a href="admindash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-<a href="adannouncement.php"><i class="fas fa-bullhorn"></i> Announcements</a>
-<a href="adsitin.php"><i class="fas fa-chair"></i> Current Sitin</a>
-<a href="addaily.php"><i class="fas fa-chair"></i> Daily Sitin Records</a>
-<a href="viewReports.php"><i class="fas fa-eye"></i> View Sitin Reports</a>
-<a href="adreservation.php"><i class="fas fa-chair"></i> Reservation</a>
-   <!-- <a href="adlabreward.php"><i class="fas fa-chair"></i> Lab Reward</a>-->
-   <a href="adlabresources.php"><i class="fas fa-book"></i> Lab Resources</a>
-<a href="adlabsched.php"><i class="fas fa-calendar"></i> Lab Schedule</a>
-<a href="viewReports.php"><i class="fas fa-book-open"></i> Feedback Reports</a>
-<a href="admindash.php?logout=true" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-</div>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture">
+            <span class="user-name"><?php echo htmlspecialchars($user_name); ?></span>
+        </div>
+        <div class="nav-right">
+            <a href="admindash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="adannouncement.php"><i class="fas fa-bullhorn"></i> Announcements</a>
+            <a href="adsitin.php"><i class="fas fa-chair"></i> Current Sitin</a>
+            <a href="addaily.php"><i class="fas fa-chair"></i> Daily Records</a>
+            <a href="viewReports.php"><i class="fas fa-eye"></i> Sitin Reports</a>
+            <a href="adreservation.php"><i class="fas fa-chair"></i> Reservation</a>
+            <a href="adlabresources.php"><i class="fas fa-book"></i> Resources</a>
+            <a href="adlabsched.php"><i class="fas fa-calendar"></i> Schedule</a>
+            <a href="admindash.php?logout=true" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+    </nav>
 
     <div class="content">
         <div class="content-wrapper">

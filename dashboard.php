@@ -44,7 +44,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 body {
     display: flex;
-    background: #f0f2f5;
+    background: #0a192f;
     min-height: 100vh;
     position: relative;
 }
@@ -52,22 +52,23 @@ body {
 /* Sidebar Styles */
 .sidebar {
     width: 280px;
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #1a2942;
     height: 100vh;
     padding: 25px;
     position: fixed;
     display: flex;
     flex-direction: column;
-    transform: translateX(0); /* Remove the initial transform */
+    transform: translateX(0);
     transition: all 0.3s ease-in-out;
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-header {
     text-align: center;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-header h2 {
@@ -84,7 +85,7 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: #a0aec0;
     text-decoration: none;
     padding: 12px 15px;
     border-radius: 8px;
@@ -98,16 +99,19 @@ body {
     width: 20px;
     text-align: center;
     font-size: 1.1rem;
+    color: #4a90e2;
 }
 
 .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #2a3b55;
+    color: white;
     transform: translateX(5px);
 }
 
 .logout-button {
     margin-top: auto;
     background: rgba(220, 53, 69, 0.1) !important;
+    color: #ff6b6b !important;
 }
 
 .logout-button:hover {
@@ -117,7 +121,7 @@ body {
 /* Content Area */
 .content {
     flex-grow: 1;
-    margin-left: 280px; /* Always show content with sidebar margin */
+    margin-left: 280px;
     padding: 40px;
     width: calc(100% - 280px);
     transition: all 0.3s ease-in-out;
@@ -125,8 +129,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #f0f2f5;
+    background: #0a192f;
 }
+
 .dashboard-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -135,11 +140,13 @@ body {
     max-width: 1400px;
     padding: 20px;
 }
+
 .left-column {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
+
 .right-column {
     display: flex;
     flex-direction: column;
@@ -149,11 +156,12 @@ body {
 }
 
 .greeting-card {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #1a2942;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .greeting-content {
@@ -176,7 +184,7 @@ body {
     height: 70px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid #4a90e2;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -188,13 +196,15 @@ body {
 }
 
 .greeting-text .date {
-    color: rgba(255, 255, 255, 0.8);
+    color: #a0aec0;
     font-size: 1rem;
 }
+
 .welcome-container {
     margin: 0;
     width: 100%;
 }
+
 .right-column {
     display: flex;
     flex-direction: column;
@@ -202,6 +212,7 @@ body {
     width: 100%;
     max-width: 500px;   
 }
+
 .leaderboard-section {
     background: linear-gradient(135deg, #14569b, #2a3f5f);
     border-radius: 15px;
@@ -226,6 +237,7 @@ body {
     object-fit: cover;
     border: 2px solid #e2e8f0;
 }
+
 .user-id {
     color: #718096;
     font-size: 0.85rem;
@@ -240,6 +252,7 @@ body {
     font-weight: 500;
     white-space: nowrap;
 }
+
 .welcome-container {
     background: white;
     padding: 50px;
@@ -521,6 +534,7 @@ body {
     border-left: 4px solid #CD7F32;
     box-shadow: 0 4px 15px rgba(20, 86, 155, 0.1);
 }
+
 .leaderboard-title {
     font-size: 1.5rem;
     font-weight: 600;
@@ -535,6 +549,7 @@ body {
     gap: 10px;
     margin-bottom: 20px;
 }
+
 /* Rank Icons */
 .rank {
     min-width: 40px;
@@ -571,7 +586,6 @@ body {
     box-shadow: 0 4px 12px rgba(3, 105, 161, 0.4);
 }
 
-
 /* Top 3 Rank Animations */
 @keyframes sparkle {
     0%, 100% { transform: scale(1); }
@@ -589,7 +603,6 @@ body {
         <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="viewAnnouncement.php"><i class="fas fa-bullhorn"></i> Announcement</a>
         <a href="labRules&Regulations.php"><i class="fas fa-flask"></i> Rules & Regulations</a>
-        <a href="sitinrules.php"><i class="fas fa-book"></i> Sit-in Rules</a>
         <a href="history.php"><i class="fas fa-history"></i> History</a>
         <a href="reservation.php"><i class="fas fa-calendar-alt"></i> Reservation</a>
         <a href="labschedule.php"><i class="fas fa-calendar-alt"></i> Lab Schedules</a>

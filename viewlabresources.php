@@ -100,7 +100,7 @@ $categories_result = mysqli_query($con, $categories_query);
 
 body {
     display: flex;
-    background: #f0f2f5;
+    background: #0a192f;
     min-height: 100vh;
     position: relative;
 }
@@ -108,21 +108,22 @@ body {
 /* Sidebar Styles */
 .sidebar {
     width: 280px;
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #1a2942;
     height: 100vh;
     padding: 25px;
     position: fixed;
     display: flex;
     flex-direction: column;
     transform: translateX(0);
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-header {
     text-align: center;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-header h2 {
@@ -141,16 +142,22 @@ body {
     margin-bottom: 25px;
     border-radius: 12px;
     transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
+    background: #2a3b55;
+}
+
+.profile-link:hover {
+    background: #357abd;
+    transform: translateY(-2px);
 }
 
 .profile-link img {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid #4a90e2;
     margin-bottom: 12px;
     object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .profile-link .user-name {
@@ -167,7 +174,7 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: #a0aec0;
     text-decoration: none;
     padding: 12px 15px;
     border-radius: 8px;
@@ -181,16 +188,23 @@ body {
     width: 20px;
     text-align: center;
     font-size: 1.1rem;
+    color: #4a90e2;
 }
 
 .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #2a3b55;
+    color: white;
     transform: translateX(5px);
 }
 
 .logout-button {
     margin-top: auto;
     background: rgba(220, 53, 69, 0.1) !important;
+    color: #ff6b6b !important;
+}
+
+.logout-button:hover {
+    background: rgba(220, 53, 69, 0.2) !important;
 }
 
 /* Content Area */
@@ -199,26 +213,29 @@ body {
     padding: 30px;
     width: calc(100% - 280px);
     min-height: 100vh;
+    background: #0a192f;
 }
 
 .resources-container {
-    background: white;
+    background: #1a2942;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    min-height: calc(100vh - 60px); /* Changed from height to min-height */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-height: calc(100vh - 60px);
     width: 100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .resources-header {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #2a3b55;
     color: white;
     padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .resources-header h1 {
@@ -226,10 +243,11 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    color: white;
 }
 
 .back-button {
-    background: rgba(255, 255, 255, 0.15);
+    background: #1a2942;
     color: white;
     padding: 8px 20px;
     border-radius: 8px;
@@ -239,116 +257,97 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .back-button:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: #357abd;
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Update the filters container */
+/* Filters section */
 .filters {
-    padding: 25px;
-    background: white;
-    border-bottom: 1px solid #e2e8f0;
+    background: #1a2942;
+    padding: 20px;
     display: flex;
     gap: 20px;
     align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Enhanced search box design */
-.search-box {
-    flex: 1;
-    position: relative;
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.search-box input {
-    width: 100%;
-    padding: 12px 20px;
-    padding-left: 45px;
-    border: 2px solid #e2e8f0;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    color: #4a5568;
-    transition: all 0.3s ease;
-    background: #f8fafc;
+.filter-group label {
+    color: white;
+    font-weight: 500;
 }
 
-.search-box::before {
-    content: '\f002';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #a0aec0;
-    font-size: 1.1rem;
+.filter-group select,
+.filter-group input[type="text"] {
+    padding: 8px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: #2a3b55;
+    color: white;
+    min-width: 200px;
 }
 
-.search-box input:focus {
+.filter-group select:hover,
+.filter-group input[type="text"]:hover {
+    border-color: #4a90e2;
+    background: #357abd;
+}
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus {
     outline: none;
-    border-color: #14569b;
-    background: white;
-    box-shadow: 0 2px 10px rgba(20, 86, 155, 0.1);
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
 }
 
-.search-box input::placeholder {
-    color: #a0aec0;
-}
-
-/* Update select boxes to match search design */
-.category-filter select,
-.type-filter select {
-    padding: 12px 35px 12px 15px;
-    border: 2px solid #e2e8f0;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    min-width: 180px;
-    color: #4a5568;
-    background: #f8fafc;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
-}
-
-.category-filter select:focus,
-.type-filter select:focus {
-    outline: none;
-    border-color: #14569b;
-    box-shadow: 0 2px 10px rgba(20, 86, 155, 0.1);
-}
-
-.resources-grid {
-    padding: 25px;
+/* Resources list */
+.resources-list {
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     overflow-y: auto;
-    background: #f8fafc;
-    flex: 1; /* Add this to allow grid to expand */
 }
 
-/* Update resource card styles */
 .resource-card {
-    background: white;
+    background: linear-gradient(rgba(26, 41, 66, 0.95), rgba(26, 41, 66, 0.95)), url('assets/card-bg.jpg');
+    background-size: cover;
+    background-position: center;
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
-    height: 320px; /* Fixed height for all cards */
+    height: 320px;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: #4a90e2;
+    background: linear-gradient(rgba(26, 41, 66, 0.85), rgba(26, 41, 66, 0.85)), url('assets/card-bg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .resource-header {
     padding: 20px;
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
+    background: rgba(42, 59, 85, 0.8);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -359,78 +358,54 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Hide overflow content */
+    overflow: hidden;
+    background: rgba(26, 41, 66, 0.7);
+    backdrop-filter: blur(5px);
 }
 
 .resource-title {
     font-size: 1.1rem;
-    color: #2d3748;
+    color: white;
     font-weight: 600;
     margin-bottom: 10px;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .resource-description {
-    color: #718096;
+    color: #a0aec0;
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: auto;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .resource-actions {
     padding: 20px;
     display: flex;
     gap: 12px;
-    border-top: 1px solid #e2e8f0;
-    background: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(42, 59, 85, 0.8);
+    backdrop-filter: blur(5px);
 }
 
-/* Hide file info by default */
-.file-info {
-    display: none;
-}
-
-/* Show file info on hover in a tooltip */
-.resource-card:hover .file-info {
-    display: flex;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #14569b;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    z-index: 10;
-    white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.no-resources {
-    text-align: center;
-    padding: 40px;
-    color: #718096;
-}
-
-.no-resources i {
-    font-size: 3rem;
-    color: #e2e8f0;
-    margin-bottom: 15px;
-}
-
-.resource-date {
-    color: #64748b;
-    font-size: 0.85rem;
-    display: flex;
+.category-badge {
+    display: inline-flex;
     align-items: center;
     gap: 6px;
+    padding: 6px 12px;
+    background: rgba(74, 144, 226, 0.9);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(5px);
 }
 
 .resource-btn {
@@ -445,59 +420,199 @@ body {
     font-size: 0.95rem;
     transition: all 0.3s ease;
     cursor: pointer;
+    backdrop-filter: blur(5px);
 }
 
 .link-btn {
-    background: #14569b;
+    background: rgba(74, 144, 226, 0.9);
     color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .link-btn:hover {
-    background: #0f4578;
+    background: rgba(53, 122, 189, 0.9);
     transform: translateY(-2px);
 }
 
 .download-btn {
-    background: #f8fafc;
-    color: #14569b !important;
-    border: 1px solid #14569b;
+    background: rgba(26, 41, 66, 0.8);
+    color: #4a90e2 !important;
+    border: 1px solid #4a90e2;
 }
 
 .download-btn:hover {
-    background: #f1f5f9;
+    background: rgba(42, 59, 85, 0.8);
     transform: translateY(-2px);
 }
 
 .view-btn {
-    background: #14569b;
+    background: rgba(74, 144, 226, 0.9);
     color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .view-btn:hover {
-    background: #0f4578;
+    background: rgba(53, 122, 189, 0.9);
     transform: translateY(-2px);
 }
 
-.category-badge {
-    display: inline-flex;
+.resource-date {
+    color: #a0aec0;
+    font-size: 0.85rem;
+    display: flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 12px;
-    background: #14569b;
-    color: white;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Add to your existing CSS */
+.resource-icon {
+    font-size: 24px;
+    color: #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+/* Scrollbar Styling */
+.resources-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.resources-list::-webkit-scrollbar-track {
+    background: #0a192f;
+}
+
+.resources-list::-webkit-scrollbar-thumb {
+    background: #2a3b55;
+    border-radius: 4px;
+}
+
+.resources-list::-webkit-scrollbar-thumb:hover {
+    background: #4a90e2;
+}
+
+/* Update the filters container */
+.search-box {
+    flex: 1;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-left: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: white;
+    transition: all 0.3s ease;
+    background: #2a3b55;
+}
+
+.search-box::before {
+    content: '\f002';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4a90e2;
+    font-size: 1.1rem;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    background: #357abd;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+}
+
+.search-box input::placeholder {
+    color: #a0aec0;
+}
+
+/* Update select boxes to match search design */
+.category-filter select,
+.type-filter select {
+    padding: 12px 35px 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    min-width: 180px;
+    color: white;
+    background: #2a3b55;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234a90e2'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+.category-filter select:hover,
+.type-filter select:hover {
+    border-color: #4a90e2;
+    background: #357abd;
+}
+
+.category-filter select:focus,
+.type-filter select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+}
+
+.resources-grid {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    overflow-y: auto;
+    background: #0a192f;
+    flex: 1;
+}
+
+.no-resources {
+    text-align: center;
+    padding: 40px;
+    color: #a0aec0;
+}
+
+.no-resources i {
+    font-size: 3rem;
+    color: #2a3b55;
+    margin-bottom: 15px;
+}
+
 .no-actions {
     padding: 10px;
     text-align: center;
-    color: #64748b;
+    color: #a0aec0;
     font-size: 0.9rem;
-    background: #f8fafc;
+    background: #1a2942;
     border-radius: 8px;
     width: 100%;
+}
+
+/* Scrollbar Styling */
+.resources-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.resources-grid::-webkit-scrollbar-track {
+    background: #0a192f;
+}
+
+.resources-grid::-webkit-scrollbar-thumb {
+    background: #2a3b55;
+    border-radius: 4px;
+}
+
+.resources-grid::-webkit-scrollbar-thumb:hover {
+    background: #4a90e2;
 }
 </style>
 </head>

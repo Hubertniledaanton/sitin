@@ -95,15 +95,16 @@ $announcements_result = $con->query($announcements_query);
 }
 
 html, body {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #0a192f;
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: #a0aec0;
 }
 
 /* Top Navigation Bar Styles */
 .top-nav {
-    background-color: rgba(42, 63, 95, 0.9);
+    background-color: #1a2942;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
@@ -115,6 +116,7 @@ html, body {
     left: 0;
     right: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left {
@@ -175,44 +177,61 @@ html, body {
     margin-top: 80px;
     padding: 30px;
     min-height: calc(100vh - 80px);
-    background: #f0f2f5;
+    background: #0a192f;
 }
 
-/* Remove old sidebar styles */
-.sidebar {
-    display: none;
+.parent {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 25px;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-/* Rest of your existing styles for announcements, forms, etc. */
-form {
+.div1 {
+    background: #1a2942;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.div1 h1 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.div1 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
-input[type="text"], textarea {
+.div1 input[type="text"],
+.div1 textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #e2e8f0;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    font-size: 1em;
-    background: #f8fafc;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
 }
 
-input[type="text"]:focus, textarea:focus {
-    border-color: #14569b;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
+.div1 input[type="text"]::placeholder,
+.div1 textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
-textarea {
-    min-height: 150px;
+.div1 textarea {
+    min-height: 200px;
     resize: vertical;
 }
 
-button[type="submit"] {
-    background: #14569b;
+.div1 button {
+    background: #4a90e2;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -222,39 +241,50 @@ button[type="submit"] {
     transition: all 0.2s;
 }
 
-button[type="submit"]:hover {
-    background: #0f4578;
-    transform: translateY(-1px);
+.div1 button:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+}
+
+.div2 {
+    background: #1a2942;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.div2 h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
 }
 
 .announcement {
-    background: #f8f9fa;
-    border-radius: 12px;
+    background: #2a3b55;
     padding: 20px;
-    margin-bottom: 15px;
-    transition: transform 0.2s;
-}
-
-.announcement:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .announcement h3 {
-    color: #14569b;
+    color: white;
     margin-bottom: 12px;
     font-size: 1.2em;
     font-weight: 600;
 }
 
 .announcement p {
-    color: #4a5568;
+    color: #a0aec0;
     margin-bottom: 15px;
     line-height: 1.6;
 }
 
 .announcement .timestamp {
-    color: #718096;
+    color: #4a90e2;
     font-size: 0.9em;
     margin-bottom: 15px;
 }
@@ -277,23 +307,18 @@ button[type="submit"]:hover {
 }
 
 .update {
-    background: #14569b;
+    background: #4a90e2;
     color: white;
 }
 
 .delete {
-    background: #dc3545;
+    background: rgba(220, 53, 69, 0.8);
     color: white;
 }
 
 .update:hover, .delete:hover {
     transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.div2 {
-    max-height: 800px;
-    overflow-y: auto;
+    filter: brightness(1.1);
 }
 
 /* Custom scrollbar */
@@ -302,17 +327,17 @@ button[type="submit"]:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #0a192f;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #14569b;
+    background: #2a3b55;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0f4578;
+    background: #4a90e2;
 }
 
 /* Responsive Design */

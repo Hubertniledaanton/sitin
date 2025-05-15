@@ -129,14 +129,15 @@ $result = mysqli_query($con, $query);
         }
 
         html, body {
-            background: linear-gradient(135deg, #14569b, #2a3f5f);
+            background: #0a192f;
             min-height: 100vh;
             width: 100%;
+            color: #a0aec0;
         }
 
         /* Top Navigation Bar Styles */
         .top-nav {
-            background-color: rgba(42, 63, 95, 0.9);
+            background-color: #1a2942;
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
@@ -148,6 +149,7 @@ $result = mysqli_query($con, $query);
             left: 0;
             right: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-left {
@@ -208,11 +210,11 @@ $result = mysqli_query($con, $query);
             margin-top: 80px;
             padding: 30px;
             min-height: calc(100vh - 80px);
-            background: #f0f2f5;
+            background: #0a192f;
         }
 
         .container {
-            background: white;
+            background: #1a2942;
             border-radius: 15px;
             padding: 25px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -220,10 +222,11 @@ $result = mysqli_query($con, $query);
             max-width: 1400px;
             margin: 0 auto;
             height: calc(100vh - 60px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         h1 {
-            color: #14569b;
+            color: white;
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 25px;
@@ -239,10 +242,11 @@ $result = mysqli_query($con, $query);
         }
 
         .div1, .div2 {
-            background: white;
+            background: #1a2942;
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .div2 {
@@ -251,9 +255,10 @@ $result = mysqli_query($con, $query);
         }
 
         .resource-form {
-            background: #f8f9fa;
+            background: #2a3b55;
             padding: 20px;
             border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .form-group {
@@ -263,7 +268,7 @@ $result = mysqli_query($con, $query);
         label {
             display: block;
             margin-bottom: 8px;
-            color: #14569b;
+            color: white;
             font-weight: 500;
         }
 
@@ -272,22 +277,23 @@ $result = mysqli_query($con, $query);
         select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            background: white;
+            background: #1a2942;
+            color: white;
             transition: all 0.2s;
         }
 
         input[type="text"]:focus,
         textarea:focus,
         select:focus {
-            border-color: #14569b;
+            border-color: #4a90e2;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
         }
 
         .submit-btn {
-            background: #14569b;
+            background: #4a90e2;
             color: white;
             padding: 12px 24px;
             border: none;
@@ -300,7 +306,7 @@ $result = mysqli_query($con, $query);
         }
 
         .submit-btn:hover {
-            background: #0f4578;
+            background: #357abd;
             transform: translateY(-1px);
         }
 
@@ -308,12 +314,13 @@ $result = mysqli_query($con, $query);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: white;
+            background: #2a3b55;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 15px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .resource-info {
@@ -323,19 +330,19 @@ $result = mysqli_query($con, $query);
         .resource-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #1e293b;
+            color: white;
             margin-bottom: 8px;
         }
 
         .resource-description {
-            color: #64748b;
+            color: #a0aec0;
             margin-bottom: 10px;
             font-size: 0.95rem;
         }
 
         .resource-meta {
             font-size: 0.85rem;
-            color: #94a3b8;
+            color: #718096;
         }
 
         .resource-actions {
@@ -344,15 +351,18 @@ $result = mysqli_query($con, $query);
         }
 
         .action-btn {
-            padding: 8px;
+            padding: 8px 16px;
             border-radius: 6px;
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .edit-btn {
-            background: #14569b;
+            background: #4a90e2;
         }
 
         .delete-btn {
@@ -368,18 +378,20 @@ $result = mysqli_query($con, $query);
             padding: 12px;
             border-radius: 8px;
             margin-bottom: 20px;
+            background: #2a3b55;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.3);
         }
 
         .error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
         }
 
         .resources-list {
@@ -393,17 +405,17 @@ $result = mysqli_query($con, $query);
         }
 
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #0a192f;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #14569b;
+            background: #2a3b55;
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #0f4578;
+            background: #4a90e2;
         }
 
         /* Responsive Design */
@@ -473,27 +485,28 @@ $result = mysqli_query($con, $query);
             align-items: center;
             gap: 10px;
             padding: 12px 20px;
-            background: #f8fafc;
-            border: 2px dashed #14569b;
+            background: #1a2942;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            color: #a0aec0;
         }
 
         .file-label:hover {
-            background: #f1f5f9;
-            border-color: #0f4578;
+            background: #2a3b55;
+            border-color: #4a90e2;
         }
 
         .file-label i {
             font-size: 1.2rem;
-            color: #14569b;
+            color: #4a90e2;
         }
 
         .file-info {
             margin-top: 8px;
             font-size: 0.9rem;
-            color: #64748b;
+            color: #718096;
         }
     </style>
 </head>

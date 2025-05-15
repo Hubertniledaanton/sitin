@@ -2,50 +2,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 html,body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    background: url('bg1.jpg') no-repeat center center fixed;
-    background-size: cover; /* Ensures it covers the entire screen */
+    background-image: linear-gradient(to bottom right, rgb(83, 118, 189), rgb(38, 40, 63));
     overflow: hidden;
 }
 body {
-    background-image: linear-gradient(to right, rgb(123, 192, 238), rgb(248, 248, 201));
+    /* Remove conflicting background */
 }
 .container {  
-    opacity: 0.9;  
+    opacity: 0.95;  
     position: absolute;
     left: 50%;
     top: 50%;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 70px;
     width: 450px;
     transform: translate(-50%, -50%);
-    background: rgb(245, 244, 244);
-    /* From https://css.glass */
-
+    background: #1a2942;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .container1 {
-    opacity: 0.9;
+    opacity: 0.95;
     position: absolute;
     left: 50%;
     top: 50%;
     width: 90%; /* Make it responsive */
     max-width: 450px; /* Maintain a max width */
-    border-radius: 4px; /* Match the design */
+    border-radius: 8px; /* Match the design */
     padding: 20px; /* Adjust internal padding */
     transform: translate(-50%, -50%);
-    background: rgb(245, 244, 244); /* Same background as container */
+    background: #1a2942;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 h2, h3 {
     font-size: 1.5rem;
     text-align: center;
     margin-bottom: 10px;
+    color: #ffffff;
 }
 h3 {
     margin-top: 20px;
@@ -61,18 +63,19 @@ form .form-control {
 .form-control input {
     height: 100%;
     width: 100%;
-    background: hsl(0, 0%, 100%);
+    background: #2a3b55;
     border: none;
     outline: none;
     border-radius: 4px;
-    color: #000000;
+    color: #ffffff;
     font-size: 1rem;
     padding: 0 10px;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 .form-control input:is(:focus, :valid) {
-    background: #fffdfd;
+    background: #2a3b55;
     padding: 16px 20px 0;
+    box-shadow: 0 0 0 2px #4a90e2;
 }
 .form-control label {
     position: absolute;
@@ -81,7 +84,7 @@ form .form-control {
     transform: translateY(-50%);
     font-size: 0.9rem;
     pointer-events: none;
-    color: #8c8c8c;
+    color: #a0aec0;
     transition: all 0.1s ease;
 }
 .form-control input:is(:focus, :valid)~label {
@@ -92,7 +95,7 @@ form button {
     width: 100%;
     padding: 8px 0;
     font-size: 1rem;
-    background: #3bc2f7;
+    background: #4a90e2;
     color: #fff;
     font-weight: 500;
     border-radius: 4px;
@@ -100,13 +103,18 @@ form button {
     outline: none;
     margin: 15px 0;
     cursor: pointer;
-    transition: 0.1s ease;
+    transition: 0.2s ease;
 }
 form button:hover {
-    background: hsl(214, 73%, 54%);
+    background: #357abd;
 }
 a {
-    color: rgb(0, 0, 0);
+    color: #4a90e2;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+a:hover {
+    color: #357abd;
 }
 
 .logo {
@@ -132,20 +140,21 @@ a {
 .form-control select {
     height: 100%;
     width: 100%;
-    background: hsl(0, 0%, 100%);
+    background: #2a3b55;
     border: none;
     outline: none;
     border-radius: 4px;
-    color: #000000;
+    color: #ffffff;
     font-size: 1rem;
     padding: 0 10px;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
     appearance: none; /* Removes default arrow in some browsers */
     }
     
     .form-control select:is(:focus, :valid) {
-    background: #fffdfd;
+    background: #2a3b55;
     padding: 16px 20px 0;
+    box-shadow: 0 0 0 2px #4a90e2;
     }
     
     .form-control select + label {
@@ -155,7 +164,7 @@ a {
     transform: translateY(-50%);
     font-size: 0.9rem;
     pointer-events: none;
-    color: #8c8c8c;
+    color: #a0aec0;
     transition: all 0.1s ease;
     }
     

@@ -234,7 +234,6 @@ if(isset($_POST['add_points'])) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Admin Sit-in Management</title>
 <style>
 * {
@@ -245,15 +244,16 @@ if(isset($_POST['add_points'])) {
 }
 
 html, body {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #0a192f;
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: #a0aec0;
 }
 
 /* Top Navigation Bar Styles */
 .top-nav {
-    background-color: rgba(42, 63, 95, 0.9);
+    background-color: #1a2942;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
@@ -265,6 +265,7 @@ html, body {
     left: 0;
     right: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left {
@@ -292,7 +293,7 @@ html, body {
 }
 
 .nav-right a {
-    color: white;
+    color: #a0aec0;
     text-decoration: none;
     padding: 8px 15px;
     border-radius: 8px;
@@ -310,6 +311,7 @@ html, body {
 .nav-right a:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
+    color: white;
 }
 
 .nav-right .logout-button {
@@ -321,128 +323,207 @@ html, body {
     background: rgba(220, 53, 69, 0.2);
 }
 
+/* Content Area */
 .content {
     margin-top: 80px;
     padding: 30px;
     min-height: calc(100vh - 80px);
-    background: #f0f2f5;
+    width: 100%;
 }
 
-/* Remove old sidebar styles */
-.sidebar {
-    display: none;
-}
-
-.container {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    height: calc(100vh - 60px);
+.content-wrapper {
     max-width: 1400px;
     margin: 0 auto;
+    background: #1a2942;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: calc(100vh - 140px);
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    color: #14569b;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 25px;
+.content-header {
+    background: #2a3b55;
+    color: white;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.table-container {
-    height: calc(100% - 140px);
-    overflow-y: auto;
-    border-radius: 12px;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.content-header h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
 }
 
-table {
+.content-body {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+/* Form Styles */
+.form-container {
+    background: #2a3b55;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: white;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: #1a2942;
+    color: #a0aec0;
+    font-size: 0.95rem;
 }
 
-thead {
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.submit-btn {
+    background: #4a90e2;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #357abd;
+    transform: translateY(-2px);
+}
+
+/* Table Styles */
+.table-container {
+    flex: 1;
+    overflow: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #2a3b55;
+}
+
+.sitin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sitin-table th {
+    background: #1a2942;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 500;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 10;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-th {
-    background: #14569b;
-    color: white;
-    padding: 15px;
-    font-weight: 500;
-    text-align: left;
+.sitin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0aec0;
 }
 
-td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #e2e8f0;
+.sitin-table tr:hover {
+    background: #1a2942;
 }
 
-tbody tr:hover {
-    background: #f8fafc;
-}
-
-.w3-button {
-    padding: 8px 16px;
+/* Action Buttons */
+.action-btn {
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 6px;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.9em;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
 }
 
-.w3-red {
-    background: #dc3545;
+.logout-btn {
+    background: #f56565;
     color: white;
 }
 
-.w3-green {
-    background: #28a745;
+.points-btn {
+    background: #48bb78;
     color: white;
+    margin-left: 0.5rem;
 }
 
-.w3-button:hover {
+.action-btn:hover {
+    opacity: 0.9;
     transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.success-message {
-    background: #d4edda;
-    color: #155724;
-    padding: 15px;
-    margin-bottom: 20px;
+/* Alert Messages */
+.alert {
+    padding: 1rem;
     border-radius: 8px;
-    text-align: center;
-    font-weight: 500;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+.alert-success {
+    background: rgba(72, 187, 120, 0.2);
+    color: #48bb78;
+    border: 1px solid rgba(72, 187, 120, 0.3);
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #14569b;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0f4578;
+.alert-error {
+    background: rgba(245, 101, 101, 0.2);
+    color: #f56565;
+    border: 1px solid rgba(245, 101, 101, 0.3);
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .nav-right {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-right a {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
 @media (max-width: 768px) {
     .top-nav {
         flex-direction: column;
@@ -466,34 +547,27 @@ tbody tr:hover {
     
     .content {
         margin-top: 120px;
-    }
-    
-    .container {
         padding: 15px;
     }
-}
 
-/* Add to your existing styles */
-.error-message {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 500;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
+    .form-container {
+        padding: 1rem;
+    }
+
+    .action-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
 }
 </style>
 </head>
 <body>
-<div class="top-nav">
-    <div class="nav-left">
-        <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture" onerror="this.src='assets/default.png';">
-        <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
-    </div>
-    <div class="nav-right">
+    <nav class="top-nav">
+        <div class="nav-left">
+            <img src="uploads/<?php echo htmlspecialchars($profile_pic); ?>" alt="Profile Picture">
+            <span class="user-name"><?php echo htmlspecialchars($user_name); ?></span>
+        </div>
+        <div class="nav-right">
         <a href="admindash.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
         <a href="adannouncement.php"><i class="fas fa-bullhorn"></i> Announcements</a>
         <a href="adsitin.php"><i class="fas fa-chair"></i> Current Sitin</a>
@@ -504,117 +578,117 @@ tbody tr:hover {
         <a href="adlabsched.php"><i class="fas fa-calendar"></i> Lab Schedule</a>
         <a href="adfeedback.php"><i class="fas fa-book-open"></i> Feedback</a>
         <a href="admindash.php?logout=true" class="logout-button"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-    </div>
-</div>
+        </div>
+    </nav>
 
-<div class="content">
-    <div class="container">
-    <h1>Sit-in Management</h1>
-    <?php
-    if (isset($_GET['success'])) {
-        echo "<div class='success-message'>
-                ✅ User information successfully added to login records table.
-              </div>";
-    }
-    if (isset($_GET['logout_success'])) {
-        echo "<div class='success-message'>
-                ✅ Student successfully logged out
-              </div>";
-    }
-    if (isset($_GET['point_success'])) {
-        $reward_type = isset($_GET['reward']) ? $_GET['reward'] : '';
-        $reward_msg = '';
-        
-        // Get the user's current points
-        if (isset($_GET['points'])) {
-            $current_points = intval($_GET['points']);
-            if ($reward_type === 'point') {
-                $reward_msg = "Student logged out and earned 1 point! (Total points: {$current_points})";
-            } else if ($reward_type === 'session') {
-                $reward_msg = "Student logged out and earned 1 new session for reaching {$current_points} points!";
-            }
-        } else {
-            $reward_msg = "Student logged out and earned 1 point!";
-        }
-        echo "<div class='success-message'>✅ " . $reward_msg . "</div>";
-    }
-    if (isset($_GET['error'])) {
-        $error_msg = '';
-        switch($_GET['error']) {
-            case 'no_sessions':
-                $error_msg = "❌ Student has no remaining sessions";
-                break;
-            case 'db_error':
-                $error_msg = "❌ Database error occurred";
-                break;
-            case 'logout_failed':
-                $error_msg = "❌ Failed to logout student";
-                break;
-        }
-        if ($error_msg) {
-            echo "<div class='error-message'>$error_msg</div>";
-        }
-    }
-    ?>
-        <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID No</th>
-                    <th>Full Name</th>
-                    <th>Purpose</th>
-                    <th>Room</th>
-                    <th>Date & Time</th>
-                    <th>Sessions</th>
-                    <th>Points</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $sitin_result = mysqli_query($con, "SELECT login_records.IDNO, FULLNAME, 
-                           TIME_IN, REMAINING_SESSIONS, PURPOSE, LAB_ROOM, 
-                           POINTS, CONVERT_TZ(TIME_IN, 'UTC', 'Asia/Manila') as local_time 
-                           FROM login_records 
-                           JOIN user ON login_records.IDNO = user.IDNO 
-                           WHERE TIME_OUT IS NULL 
-                           ORDER BY TIME_IN DESC");
-
-while ($sitin_row = mysqli_fetch_assoc($sitin_result)) { ?>
-    <tr>
-        <td><?php echo htmlspecialchars($sitin_row['IDNO']); ?></td>
-        <td><?php echo htmlspecialchars($sitin_row['FULLNAME']); ?></td>
-        <td class="purpose-column"><?php echo htmlspecialchars($sitin_row['PURPOSE']); ?></td>
-        <td class="room-column"><?php echo htmlspecialchars($sitin_row['LAB_ROOM']); ?></td>
-        <td><?php 
-            $timestamp = strtotime($sitin_row['TIME_IN']);
-            echo date('M d, Y h:i A', $timestamp); 
-        ?></td>
-        <td><?php echo htmlspecialchars($sitin_row['REMAINING_SESSIONS']); ?></td>
-        <td><?php echo htmlspecialchars($sitin_row['POINTS']); ?></td>
-        <td>
-            <div style="display: flex; gap: 5px;">
-                <a href="adsitin.php?addpoint=<?php echo htmlspecialchars($sitin_row['IDNO']); ?>" 
-                   class="w3-button w3-green" 
-                   title="Add 1 point">Reward</a>
-                <a href="adsitin.php?id=<?php echo htmlspecialchars($sitin_row['IDNO']); ?>" 
-                   class="w3-button w3-red">Logout</a>
+    <div class="content">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <h1><i class="fas fa-users"></i> Current Sit-in Students</h1>
             </div>
-        </td>
-    </tr>
-<?php } ?>
-            </tbody>
-        </table>
+            <div class="content-body">
+                <?php if(isset($_GET['success'])): ?>
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        Student successfully logged in!
+                    </div>
+                <?php endif; ?>
+
+                <?php if(isset($_GET['error'])): ?>
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <?php 
+                            if($_GET['error'] == 'no_sessions') echo "Student has no remaining sessions.";
+                            else if($_GET['error'] == 'db_error') echo "Database error occurred.";
+                            else if($_GET['error'] == 'logout_failed') echo "Failed to log out student.";
+                        ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if(isset($_GET['point_success'])): ?>
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        <?php 
+                            echo "Point added successfully! ";
+                            if(isset($_GET['reward']) && $_GET['reward'] == 'session') {
+                                echo "Student earned an extra session for reaching " . $_GET['points'] . " points!";
+                            }
+                        ?>
+                    </div>
+                <?php endif; ?>
+
+                <div class="form-container">
+                    <form method="POST" action="">
+                        <div class="form-group">
+                            <label for="searchId">Student ID:</label>
+                            <input type="text" id="searchId" name="searchId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="purpose">Purpose:</label>
+                            <select id="purpose" name="purpose" required>
+                                <option value="">Select Purpose</option>
+                                <option value="Research">Research</option>
+                                <option value="Assignment">Assignment</option>
+                                <option value="Project">Project</option>
+                                <option value="Self-Study">Self-Study</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="labRoom">Lab Room:</label>
+                            <select id="labRoom" name="labRoom" required>
+                                <option value="">Select Room</option>
+                                <option value="524">524</option>
+                                <option value="526">526</option>
+                                <option value="528">528</option>
+                                <option value="530">530</option>
+                                <option value="542">542</option>
+                                <option value="544">544</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Log In Student</button>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <table class="sitin-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Room</th>
+                                <th>Purpose</th>
+                                <th>Time In</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT * FROM login_records WHERE TIME_OUT IS NULL ORDER BY TIME_IN DESC";
+                            $result = mysqli_query($con, $query);
+                            while($row = mysqli_fetch_assoc($result)):
+                            ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['IDNO']); ?></td>
+                                <td><?php echo htmlspecialchars($row['FULLNAME']); ?></td>
+                                <td>Room <?php echo htmlspecialchars($row['LAB_ROOM']); ?></td>
+                                <td><?php echo htmlspecialchars($row['PURPOSE']); ?></td>
+                                <td><?php echo date('h:i A', strtotime($row['TIME_IN'])); ?></td>
+                                <td>
+                                    <a href="?id=<?php echo $row['IDNO']; ?>" class="action-btn logout-btn">
+                                        <i class="fas fa-sign-out-alt"></i> Log Out
+                                    </a>
+                                    <a href="?addpoint=<?php echo $row['IDNO']; ?>" class="action-btn points-btn">
+                                        <i class="fas fa-plus-circle"></i> Add Point
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<script>
-if (window.location.href.indexOf("success=1") > -1) {
-    setTimeout(function() {
-        window.history.replaceState(null, null, window.location.pathname);
-    }, 3000); // Clears success message after 3 seconds
-}
-</script>
 </body>
 </html>

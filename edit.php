@@ -113,29 +113,32 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 body {
     display: flex;
-    background: #f0f2f5;
+    background: #0a192f;
     min-height: 100vh;
     width: 100%;
+    color: #a0aec0;
 }
 
 /* Sidebar Styles */
 .sidebar {
     width: 280px;
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #1a2942;
     height: 100vh;
     padding: 25px;
     position: fixed;
     display: flex;
     flex-direction: column;
     transform: translateX(0);
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .dashboard-header {
     text-align: center;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-header h2 {
@@ -155,13 +158,14 @@ body {
     border-radius: 12px;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .profile-link img {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
     margin-bottom: 12px;
     object-fit: cover;
 }
@@ -180,7 +184,7 @@ body {
 }
 
 .nav-links a {
-    color: white;
+    color: #a0aec0;
     text-decoration: none;
     padding: 12px 15px;
     border-radius: 8px;
@@ -194,16 +198,23 @@ body {
     width: 20px;
     text-align: center;
     font-size: 1.1rem;
+    color: #4a90e2;
 }
 
 .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: #2a3b55;
     transform: translateX(5px);
+    color: white;
 }
 
 .logout-button {
     margin-top: auto;
     background: rgba(220, 53, 69, 0.1) !important;
+    color: #ff6b6b !important;
+}
+
+.logout-button:hover {
+    background: rgba(220, 53, 69, 0.2) !important;
 }
 
 /* Content Area */
@@ -212,27 +223,30 @@ body {
     padding: 30px;
     width: calc(100% - 280px);
     min-height: 100vh;
+    background: #0a192f;
 }
 
 .edit-container {
-    background: white;
+    background: #1a2942;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     height: calc(100vh - 60px);
     width: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .edit-header {
-    background: linear-gradient(135deg, #14569b, #2a3f5f);
+    background: #2a3b55;
     color: white;
     padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .edit-header h1 {
@@ -240,6 +254,25 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    color: white;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4a90e2;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(74, 144, 226, 0.2);
+    transform: translateX(-5px);
 }
 
 .edit-content {
@@ -247,49 +280,24 @@ body {
     overflow-y: auto;
 }
 
-.profile-image-container {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 30px;
-    cursor: pointer;
-}
-
-.profile-image-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #14569b;
-}
-
-.profile-image-container:hover::after {
-    content: 'Change Photo';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(20, 86, 155, 0.8);
-    color: white;
-    padding: 8px;
-    border-radius: 0 0 75px 75px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.edit-form {
-    max-width: 600px;
-    margin: 0 auto;
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    flex: 1;
+}
+
+.form-group.full-width {
+    width: 100%;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #2d3748;
+    color: white;
     font-weight: 500;
 }
 
@@ -297,84 +305,150 @@ body {
 .form-group select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #e2e8f0;
     border-radius: 8px;
-    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #2a3b55;
+    color: #a0aec0;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    background: white;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #14569b;
-    box-shadow: 0 0 0 3px rgba(20, 86, 155, 0.1);
     outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
 .readonly-input {
-    background: #f8fafc !important;
+    background: rgba(42, 59, 85, 0.5) !important;
     cursor: not-allowed;
 }
 
+.profile-image-container {
+    margin-bottom: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-image-container:hover {
+    transform: scale(1.02);
+}
+
+#profile_preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid rgba(74, 144, 226, 0.3);
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 .submit-btn {
-    background: #14569b;
+    background: #4a90e2;
     color: white;
     padding: 12px 25px;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
+    font-weight: 500;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-    background: #0f4578;
+    background: #357abd;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
 }
 
-#profile_pic_input {
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a192f;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a3b55;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4a90e2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .edit-container {
+        height: auto;
+        min-height: calc(100vh - 30px);
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .back-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Burger Menu */
+.burger {
     display: none;
-}
-
-/* Add these styles to your existing CSS */
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.form-group.full-width {
-    grid-column: 1 / -1;
-}
-
-.profile-section {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-/* Replace the existing back-button styles in your CSS */
-.back-button {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    padding: 8px 20px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1001;
+    background: #1a2942;
+    padding: 10px;
     border-radius: 8px;
-    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
 }
 
-.back-button:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
+.burger:hover {
+    background: #2a3b55;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #4a90e2;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .burger {
+        display: block;
+    }
 }
 </style>
 </head>
